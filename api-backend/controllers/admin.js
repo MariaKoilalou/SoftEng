@@ -1,5 +1,6 @@
 //Θέλει φτιάξιμο
 
+
 // require libraries for validation, encrypting, jwt
 const { validationResult } = require('express-validator/check');
 const bcrypt = require('bcryptjs');
@@ -15,6 +16,7 @@ var models = initModels(sequelize);
 const fs = require("fs");
 const csv = require("fast-csv");
 
+//den to xoume mallon
 exports.postResetsessions = (req, res, next) => {
 
     const adminPw = "$2y$12$3hLJswSlH3RHShXDwXuH/OQU98hFYcTbA7xqOlKQKuYkX8yYYKaMC"
@@ -61,7 +63,7 @@ exports.postResetsessions = (req, res, next) => {
     })
 
 }
-
+//its okay
 exports.getUser = (req, res, next) => {
 
     const email = req.params.username;
@@ -96,17 +98,20 @@ exports.getUser = (req, res, next) => {
     }
 }
 
+//themataki
 exports.getHealthcheck = (req, res, next) => {
 
     sequelize.authenticate()
         .then(() => {
-            res.status(200).json({status: "OK"});
+            //des auto
+            res.status(200).json({status: "OK","dbconnection":[connection string]});
         })
         .catch(err => {
-            res.status(500).json({status: "FAILED"});
+            res.status(500).json({status: "FAILED","dbconnection":[connection strig]});
         })
 }
 
+//its okay
 exports.login = (req, res, next) => {
 
     const username = req.body.username;
@@ -132,7 +137,7 @@ exports.login = (req, res, next) => {
                         system_admin_id: loadedAdmin.system_admin_id,
                         role: loadedAdmin.role
                     } },
-                'denthaseafisoumenatovreispotepotepote',
+                'antegeiafile',
                 { expiresIn: '1h' }
             );
             res.status(200).json({
@@ -144,6 +149,7 @@ exports.login = (req, res, next) => {
         });
 }
 
+//polles erwtiseis
 exports.postUsermod = (req, res, next) => {
 
     // get dynamic parameters and query parameter
@@ -243,6 +249,7 @@ exports.postUsermod = (req, res, next) => {
     }
 }
 
+//ti einai kan auto
 exports.postSystem = (req, res) => {
 
     try {

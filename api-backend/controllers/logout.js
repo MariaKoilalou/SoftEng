@@ -1,3 +1,5 @@
+//mallon kala
+
 // require models
 const sequelize = require('../util/database');
 var initModels = require("../models/init-models");

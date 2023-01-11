@@ -1,3 +1,5 @@
+//mallon kalo
+
 const Sequelize = require('sequelize')
 
 let sequelize;

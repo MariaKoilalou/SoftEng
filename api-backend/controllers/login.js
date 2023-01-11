@@ -68,6 +68,7 @@ module.exports = (req, res, next) => {
                     return res.status(401).json({message:'Wrong credentials!'});
 
                 }
+                //edw kati paizei
                 const token = jwt.sign(
                     { user: {
                             owner_id: loadedUser.owner_id,
