@@ -8,7 +8,7 @@ const chalk = require('chalk');
 var initModels = require("./models/init-models");
 const populate_db = require('./util/populate-db');
 
-const port = Number(8765);
+const port = Number(91003);
 const sslServer = https.createServer(
     {
         key: fs.readFileSync(path.join(__dirname, '../cert', 'key.pem')),
