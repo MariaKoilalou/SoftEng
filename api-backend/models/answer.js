@@ -1,10 +1,11 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const Sequelize = require('sequelize');
+
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define("answer", {
         Answer_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primarykey: true
+            primaryKey: true
         },
         Text: {
             type: DataTypes.STRING,
@@ -13,33 +14,60 @@ module.exports = function(sequelize, DataTypes) {
         QuestionQuestion_id: {
             type: DataTypes.INTEGER,
             allowNull: true,
-            primarykey: true
-        }
-        QuestionnaireQuestion_id: {
+            primaryKey: true,
+            references: {
+                model: 'question',
+                key: 'Question_id'
+            }
+        },
+        QuestionnaireQuestionnaire_id: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            references: {
+                model: 'questionnaire',
+                key: 'Questionnaire_id'
+            }
         }
-    });
+    },
+     {
+    sequelize,
+        tableName: 'answer',
+        timestamps: false,
+        indexes: [
+        {
+            name: "PRIMARY",
+            unique: true,
+            using: "BTREE",
+            fields: [
+                { name: "Answer_id" },
+                {name: "QuestionQuestion_id"},
+            ]
+        },
+        {
+            name: "Answer_id_UNIQUE",
+            unique: true,
+            using: "BTREE",
+            fields: [
+                { name: "Answer_id" },
+            ]
+        },
+        {
+            name: "QuestionQuestion_id_UNIQUE",
+            unique: true,
+            using: "BTREE",
+            fields: [
+                { name: "QuestionQuestion_id" },
+            ]
+        },
+            {
+                name: "QuestionnaireQuestionnaire_id_UNIQUE",
+                unique: true,
+                using: "BTREE",
+                fields: [
+                    { name: "QuestionnaireQuestionnaire_id" },
+                ]
+            },
+    ]
+});
 };
 
-const sequelize = new Sequelize(
-    'intelliq_api',
-    'root',
-    'MariaKoilalou2210!',
-    {
-        host: 'localhost',
-        dialect: 'mysql',
-    }
-);
-
-sequelize.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
-}).catch((error) => {
-    console.error('Unable to connect to the database: ', error);
-});
-
-sequelize.sync().then(() => {
-    console.log('Answer table created successfully!');
-}).catch((error) => {
-    console.error('Unable to create table : ', error);
-});

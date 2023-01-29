@@ -2,7 +2,7 @@
   "name": "softeng22-69",
   "version": "1.0.0",
   "description": "softeng project 2022-2023",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

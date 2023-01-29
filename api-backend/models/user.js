@@ -1,43 +1,48 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const Sequelize = require('sequelize');
 
-const User = sequelize.define("user", {
-    id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primarykey: true
+module.exports = function(sequelize, DataTypes) {
+    return sequelize.define("user", {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primarykey: true
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        admin: {
+            type: DataTypes.INTEGER(1),
+            allowNull: true
+        }
     },
-    username: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    admin: {
-        type: DataTypes.INTEGER,
-        allowNull: true
-    }
-});
+        {
+            sequelize,
+            tableName: 'user',
+            timestamps: false,
+            indexes: [
+                {
+                    name: "PRIMARY",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        {name: "id"},
+                    ]
+                },
+                {
+                    name: "id_UNIQUE",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        { name: "id" },
+                    ]
+                },
+            ]
+        });
+};
 
-const sequelize = new Sequelize(
-    'intelliq_api',
-    'root',
-    'MariaKoilalou2210!',
-    {
-        host: 'localhost',
-        dialect: 'mysql',
-    }
-);
 
-sequelize.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
-}).catch((error) => {
-    console.error('Unable to connect to the database: ', error);
-});
-
-sequelize.sync().then(() => {
-    console.log('User table created successfully!');
-}).catch((error) => {
-    console.error('Unable to create table : ', error);
-});

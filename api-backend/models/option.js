@@ -1,59 +1,126 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const Sequelize = require('sequelize');
 
-const Option = sequelize.define("option", {
-    Option_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primarykey: true
+module.exports = function(sequelize, DataTypes) {
+    return sequelize.define("option", {
+            Option_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true
+        },
+        SessionSession_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            references: {
+                model: 'session',
+                key: 'Session_id'
+            }
+        },
+        Userid: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
+        AnswerAnswer_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            references: {
+                model: 'answer',
+                key: 'Answer_id'
+            }
+        },
+        QuestionQuestion_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            references: {
+                model: 'question',
+                key: 'Question_id'
+            }
+        },
+        Text: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        NextQuestion_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'question',
+                key: 'Question_id'
+            }
+        }
     },
-    Sessionid: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primarykey: true
-    },
-    Userid: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primarykey: true
-    },
-    AnswerAnswer_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primarykey: true
-    },
-    QuestionQuestion_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primarykey: true
-    },
-    Text: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    NextQuestionid: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    }
-});
-
-const sequelize = new Sequelize(
-    'intelliq_api',
-    'root',
-    'MariaKoilalou2210!',
-    {
-        host: 'localhost',
-        dialect: 'mysql',
-    }
-);
-
-sequelize.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
-}).catch((error) => {
-    console.error('Unable to connect to the database: ', error);
-});
-
-sequelize.sync().then(() => {
-    console.log('Option table created successfully!');
-}).catch((error) => {
-    console.error('Unable to create table : ', error);
-});
+        {
+            sequelize,
+            tableName: 'option',
+            timestamps: false,
+            indexes: [
+                {
+                    name: "PRIMARY",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        { name: "Option_id" },
+                        {name: "SessionSession_id"},
+                        {name: "AnswerAnswer_id"},
+                        {name: "Userid"},
+                        {name: "QuestionQuestion_id"}
+                    ]
+                },
+                {
+                    name: "AnswerAnswer_id_UNIQUE",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        { name: "AnswerAnswer_id" },
+                    ]
+                },
+                {
+                    name: "SessionSession_id_UNIQUE",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        { name: "SessionSession_id" },
+                    ]
+                },
+                {
+                    name: "QuestionQuestion_id_UNIQUE",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        { name: "QuestionQuestion_id" },
+                    ]
+                },
+                {
+                    name: "Userid_UNIQUE",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        { name: "Userid" },
+                    ]
+                },
+                {
+                    name: "Option_id_UNIQUE",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        { name: "Option_id" },
+                    ]
+                },
+                {
+                    name: "NextQuestion_id_UNIQUE",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        { name: "NextQuestion_id" },
+                    ]
+                },
+            ]
+    });
+    };

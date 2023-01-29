@@ -1,0 +1,376 @@
+Index: api-backend/models/questionnaire.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const { Sequelize, DataTypes } = require(\"sequelize\");\nmodule.exports = function(sequelize, DataTypes) {\n    return sequelize.define(\"questionnaire\", {\n        Questionnaire_id: {\n            type: DataTypes.INTEGER,\n            allowNull: false,\n            primarykey: true\n        },\n        Author_id: {\n            type: DataTypes.STRING,\n            allowNull: false\n        },\n        Title: {\n            type: DataTypes.STRING,\n            allowNull: true\n        }\n    });\n};\n\nconst sequelize = new Sequelize(\n    'intelliq_api',\n    'root',\n    'MariaKoilalou2210!',\n    {\n        host: 'localhost',\n        dialect: 'mysql',\n    }\n);\n\nsequelize.authenticate().then(() => {\n    console.log('Connection has been established successfully.');\n}).catch((error) => {\n    console.error('Unable to connect to the database: ', error);\n});\n\nsequelize.sync().then(() => {\n    console.log('Book table created successfully!');\n}).catch((error) => {\n    console.error('Unable to create table : ', error);\n});\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/api-backend/models/questionnaire.js b/api-backend/models/questionnaire.js
+--- a/api-backend/models/questionnaire.js	(revision 576e713545489d104925205e471b34e04aac1789)
++++ b/api-backend/models/questionnaire.js	(date 1674993588774)
+@@ -34,7 +34,7 @@
+ });
+ 
+ sequelize.sync().then(() => {
+-    console.log('Book table created successfully!');
++    console.log('Questionnaire table created successfully!');
+ }).catch((error) => {
+     console.error('Unable to create table : ', error);
+ });
+Index: api-backend/models/user.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const { Sequelize, DataTypes } = require(\"sequelize\");\n\nconst User = sequelize.define(\"user\", {\n    id: {\n        type: DataTypes.INTEGER,\n        allowNull: false,\n        primarykey: true\n    },\n    username: {\n        type: DataTypes.STRING,\n        allowNull: true\n    },\n    password: {\n        type: DataTypes.STRING,\n        allowNull: true\n    },\n    admin: {\n        type: DataTypes.INTEGER,\n        allowNull: true\n    }\n});\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/api-backend/models/user.js b/api-backend/models/user.js
+--- a/api-backend/models/user.js	(revision 576e713545489d104925205e471b34e04aac1789)
++++ b/api-backend/models/user.js	(date 1674993588782)
+@@ -19,3 +19,25 @@
+         allowNull: true
+     }
+ });
++
++const sequelize = new Sequelize(
++    'intelliq_api',
++    'root',
++    'MariaKoilalou2210!',
++    {
++        host: 'localhost',
++        dialect: 'mysql',
++    }
++);
++
++sequelize.authenticate().then(() => {
++    console.log('Connection has been established successfully.');
++}).catch((error) => {
++    console.error('Unable to connect to the database: ', error);
++});
++
++sequelize.sync().then(() => {
++    console.log('User table created successfully!');
++}).catch((error) => {
++    console.error('Unable to create table : ', error);
++});
+Index: api-backend/models/session.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const { Sequelize, DataTypes } = require(\"sequelize\");\n\nconst Session = sequelize.define(\"session\", {\n    Session_id: {\n        type: DataTypes.INTEGER,\n        allowNull: false,\n        primarykey: true\n    },\n    Userid: {\n        type: DataTypes.INTEGER,\n        allowNull: false,\n        primarykey: true\n    },\n    date: {\n        type: DataTypes.DATE,\n        allowNull: true\n    }\n});\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/api-backend/models/session.js b/api-backend/models/session.js
+--- a/api-backend/models/session.js	(revision 576e713545489d104925205e471b34e04aac1789)
++++ b/api-backend/models/session.js	(date 1674993588762)
+@@ -16,3 +16,25 @@
+         allowNull: true
+     }
+ });
++
++const sequelize = new Sequelize(
++    'intelliq_api',
++    'root',
++    'MariaKoilalou2210!',
++    {
++        host: 'localhost',
++        dialect: 'mysql',
++    }
++);
++
++sequelize.authenticate().then(() => {
++    console.log('Connection has been established successfully.');
++}).catch((error) => {
++    console.error('Unable to connect to the database: ', error);
++});
++
++sequelize.sync().then(() => {
++    console.log('Session table created successfully!');
++}).catch((error) => {
++    console.error('Unable to create table : ', error);
++});
+Index: api-backend/models/option.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/api-backend/models/option.js b/api-backend/models/option.js
+new file mode 100644
+--- /dev/null	(date 1674993855798)
++++ b/api-backend/models/option.js	(date 1674993855798)
+@@ -0,0 +1,59 @@
++const { Sequelize, DataTypes } = require("sequelize");
++
++const Option = sequelize.define("option", {
++    Option_id: {
++        type: DataTypes.INTEGER,
++        allowNull: false,
++        primarykey: true
++    },
++    Sessionid: {
++        type: DataTypes.INTEGER,
++        allowNull: false,
++        primarykey: true
++    },
++    Userid: {
++        type: DataTypes.INTEGER,
++        allowNull: false,
++        primarykey: true
++    },
++    AnswerAnswer_id: {
++        type: DataTypes.INTEGER,
++        allowNull: false,
++        primarykey: true
++    },
++    QuestionQuestion_id: {
++        type: DataTypes.INTEGER,
++        allowNull: false,
++        primarykey: true
++    },
++    Text: {
++        type: DataTypes.STRING,
++        allowNull: true
++    },
++    NextQuestionid: {
++        type: DataTypes.INTEGER,
++        allowNull: true,
++    }
++});
++
++const sequelize = new Sequelize(
++    'intelliq_api',
++    'root',
++    'MariaKoilalou2210!',
++    {
++        host: 'localhost',
++        dialect: 'mysql',
++    }
++);
++
++sequelize.authenticate().then(() => {
++    console.log('Connection has been established successfully.');
++}).catch((error) => {
++    console.error('Unable to connect to the database: ', error);
++});
++
++sequelize.sync().then(() => {
++    console.log('Option table created successfully!');
++}).catch((error) => {
++    console.error('Unable to create table : ', error);
++});
+\ No newline at end of file
+Index: api-backend/models/answer.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/api-backend/models/answer.js b/api-backend/models/answer.js
+new file mode 100644
+--- /dev/null	(date 1674993588786)
++++ b/api-backend/models/answer.js	(date 1674993588786)
+@@ -0,0 +1,45 @@
++const { Sequelize, DataTypes } = require("sequelize");
++module.exports = function(sequelize, DataTypes) {
++    return sequelize.define("answer", {
++        Answer_id: {
++            type: DataTypes.INTEGER,
++            allowNull: false,
++            primarykey: true
++        },
++        Text: {
++            type: DataTypes.STRING,
++            allowNull: false
++        },
++        QuestionQuestion_id: {
++            type: DataTypes.INTEGER,
++            allowNull: true,
++            primarykey: true
++        }
++        QuestionnaireQuestion_id: {
++            type: DataTypes.INTEGER,
++            allowNull: true
++        }
++    });
++};
++
++const sequelize = new Sequelize(
++    'intelliq_api',
++    'root',
++    'MariaKoilalou2210!',
++    {
++        host: 'localhost',
++        dialect: 'mysql',
++    }
++);
++
++sequelize.authenticate().then(() => {
++    console.log('Connection has been established successfully.');
++}).catch((error) => {
++    console.error('Unable to connect to the database: ', error);
++});
++
++sequelize.sync().then(() => {
++    console.log('Answer table created successfully!');
++}).catch((error) => {
++    console.error('Unable to create table : ', error);
++});
+Index: api-backend/models/question.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/api-backend/models/question.js b/api-backend/models/question.js
+new file mode 100644
+--- /dev/null	(date 1674993588778)
++++ b/api-backend/models/question.js	(date 1674993588778)
+@@ -0,0 +1,44 @@
++const { Sequelize, DataTypes } = require("sequelize");
++module.exports = function(sequelize, DataTypes) {
++    return sequelize.define("question", {
++        Question_id: {
++            type: DataTypes.INTEGER,
++            allowNull: false,
++            primarykey: true
++        },
++        Text: {
++            type: DataTypes.STRING,
++            allowNull: false
++        },
++        Mandatory: {
++            type: DataTypes.INTEGER,
++            allowNull: true
++        }
++        QuestionnaireQuestion_id: {
++            type: DataTypes.INTEGER,
++            allowNull: true
++        }
++    });
++};
++
++const sequelize = new Sequelize(
++    'intelliq_api',
++    'root',
++    'MariaKoilalou2210!',
++    {
++        host: 'localhost',
++        dialect: 'mysql',
++    }
++);
++
++sequelize.authenticate().then(() => {
++    console.log('Connection has been established successfully.');
++}).catch((error) => {
++    console.error('Unable to connect to the database: ', error);
++});
++
++sequelize.sync().then(() => {
++    console.log('Question table created successfully!');
++}).catch((error) => {
++    console.error('Unable to create table : ', error);
++});
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"4c693ae9-e828-411f-b989-c221d1e7653c\" name=\"Changes\" comment=\"tables\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/api-backend/models/questionnaire.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/api-backend/models/questionnaire.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/api-backend/server.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/api-backend/server.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/api-backend/util/database.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/api-backend/util/database.js\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"PUSH_TAGS\">\n      <GitPushTagMode>\n        <option name=\"argument\" value=\"--follow-tags\" />\n        <option name=\"title\" value=\"Current Branch\" />\n      </GitPushTagMode>\n    </option>\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GithubDefaultAccount\">\n    <option name=\"defaultAccountId\" value=\"a59fb562-5311-4fe1-8593-46e5a04ee1ee\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2KSsFb3oVHqZFPhChSDMW55P99e\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"project.structure.last.edited\": \"Project\",\n    \"project.structure.proportion\": \"0.0\",\n    \"project.structure.side.proportion\": \"0.2\",\n    \"settings.editor.selected.configurable\": \"settings.sync\"\n  }\n}]]></component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"4c693ae9-e828-411f-b989-c221d1e7653c\" name=\"Changes\" comment=\"\" />\n      <created>1673979225801</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1673979225801</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"tables\">\n      <created>1674989272190</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1674989272190</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"main\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"tables\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"tables\" />\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 576e713545489d104925205e471b34e04aac1789)
++++ b/.idea/workspace.xml	(date 1674994033809)
+@@ -4,11 +4,14 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="4c693ae9-e828-411f-b989-c221d1e7653c" name="Changes" comment="tables">
++    <list default="true" id="4c693ae9-e828-411f-b989-c221d1e7653c" name="Changes" comment="db">
++      <change afterPath="$PROJECT_DIR$/api-backend/models/answer.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/api-backend/models/option.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/api-backend/models/question.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/api-backend/models/questionnaire.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/models/questionnaire.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/api-backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/server.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/api-backend/util/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/util/database.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/api-backend/models/session.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/models/session.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/api-backend/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/models/user.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -28,6 +31,9 @@
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitToolBoxStore">
++    <option name="projectConfigVersion" value="5" />
+   </component>
+   <component name="GithubDefaultAccount">
+     <option name="defaultAccountId" value="a59fb562-5311-4fe1-8593-46e5a04ee1ee" />
+@@ -35,6 +41,9 @@
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
++  <component name="PackageJsonUpdateNotifier">
++    <dismissed value="$PROJECT_DIR$/package.json" />
++  </component>
+   <component name="ProjectId" id="2KSsFb3oVHqZFPhChSDMW55P99e" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+@@ -44,14 +53,17 @@
+   "keyToString": {
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
+     "project.structure.last.edited": "Project",
+     "project.structure.proportion": "0.0",
+     "project.structure.side.proportion": "0.2",
+-    "settings.editor.selected.configurable": "settings.sync"
++    "settings.editor.selected.configurable": "configurable.group.appearance",
++    "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+@@ -62,6 +74,7 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1673979225801</updated>
++      <workItem from="1674992840630" duration="1194000" />
+     </task>
+     <task id="LOCAL-00001" summary="tables">
+       <created>1674989272190</created>
+@@ -70,9 +83,19 @@
+       <option name="project" value="LOCAL" />
+       <updated>1674989272190</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="db">
++      <created>1674992635207</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1674992635207</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
+   <component name="Vcs.Log.Tabs.Properties">
+     <option name="TAB_STATES">
+       <map>
+@@ -98,7 +121,8 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="tables" />
+-    <option name="LAST_COMMIT_MESSAGE" value="tables" />
++    <MESSAGE value="db" />
++    <option name="LAST_COMMIT_MESSAGE" value="db" />
+   </component>
+   <component name="XSLT-Support.FileAssociations.UIState">
+     <expand />

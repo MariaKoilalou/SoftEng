@@ -1,44 +1,60 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const Sequelize = require('sequelize');
+
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define("question", {
         Question_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primarykey: true
+            primaryKey: true
         },
         Text: {
             type: DataTypes.STRING,
             allowNull: false
         },
         Mandatory: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER(1),
             allowNull: true
-        }
-        QuestionnaireQuestion_id: {
+        },
+        QuestionnaireQuestionnaire_id: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            references: {
+                model: 'questionnaire',
+                key: 'Questionnaire_id'
+            }
         }
+},
+    {
+        sequelize,
+        tableName: 'question',
+        timestamps: false,
+        indexes: [
+            {
+                name: "PRIMARY",
+                unique: true,
+                using: "BTREE",
+                fields: [
+                    {name: "Question_id"},
+                ]
+            },
+            {
+                name: "Question_id_UNIQUE",
+                unique: true,
+                using: "BTREE",
+                fields: [
+                    { name: "Question_id" },
+                ]
+            },
+            {
+                name: "QuestionnaireQuestionnaire_id_UNIQUE",
+                unique: true,
+                using: "BTREE",
+                fields: [
+                    { name: "QuestionnaireQuestionnaire_id" },
+                ]
+            },
+        ]
     });
 };
 
-const sequelize = new Sequelize(
-    'intelliq_api',
-    'root',
-    'MariaKoilalou2210!',
-    {
-        host: 'localhost',
-        dialect: 'mysql',
-    }
-);
 
-sequelize.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
-}).catch((error) => {
-    console.error('Unable to connect to the database: ', error);
-});
-
-sequelize.sync().then(() => {
-    console.log('Question table created successfully!');
-}).catch((error) => {
-    console.error('Unable to create table : ', error);
-});
