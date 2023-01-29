@@ -6,16 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4c693ae9-e828-411f-b989-c221d1e7653c" name="Changes" comment="all tables">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-backend/models/answer.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/models/answer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-backend/models/option.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/models/option.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-backend/models/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/models/question.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-backend/models/questionnaire.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/models/questionnaire.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-backend/models/session.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/models/session.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-backend/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/models/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-backend/util/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/util/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-backend/models/init_models.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/models/init-models.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-backend/util/populate-db.js" beforeDir="false" afterPath="$PROJECT_DIR$/api-backend/util/populate-db.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673979225801</updated>
-      <workItem from="1674992840630" duration="10830000" />
+      <workItem from="1674992840630" duration="11896000" />
     </task>
     <task id="LOCAL-00001" summary="tables">
       <created>1674989272190</created>
