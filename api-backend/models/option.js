@@ -1,7 +1,12 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
-const Session = sequelize.define("session", {
-    Session_id: {
+const Option = sequelize.define("option", {
+    Option_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primarykey: true
+    },
+    Sessionid: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primarykey: true
@@ -11,9 +16,23 @@ const Session = sequelize.define("session", {
         allowNull: false,
         primarykey: true
     },
-    date: {
-        type: DataTypes.DATE,
+    AnswerAnswer_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primarykey: true
+    },
+    QuestionQuestion_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primarykey: true
+    },
+    Text: {
+        type: DataTypes.STRING,
         allowNull: true
+    },
+    NextQuestionid: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
     }
 });
 
@@ -34,7 +53,7 @@ sequelize.authenticate().then(() => {
 });
 
 sequelize.sync().then(() => {
-    console.log('Session table created successfully!');
+    console.log('Option table created successfully!');
 }).catch((error) => {
     console.error('Unable to create table : ', error);
 });

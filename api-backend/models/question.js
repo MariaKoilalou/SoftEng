@@ -1,17 +1,21 @@
 const { Sequelize, DataTypes } = require("sequelize");
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define("questionnaire", {
-        Questionnaire_id: {
+    return sequelize.define("question", {
+        Question_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primarykey: true
         },
-        Author_id: {
+        Text: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        Title: {
-            type: DataTypes.STRING,
+        Mandatory: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        }
+        QuestionnaireQuestion_id: {
+            type: DataTypes.INTEGER,
             allowNull: true
         }
     });
@@ -34,7 +38,7 @@ sequelize.authenticate().then(() => {
 });
 
 sequelize.sync().then(() => {
-    console.log('Questionnaire table created successfully!');
+    console.log('Question table created successfully!');
 }).catch((error) => {
     console.error('Unable to create table : ', error);
 });
