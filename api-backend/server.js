@@ -1,23 +1,16 @@
-//logika oxi kalo alla idk
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize(
+'intelliq_api',
+'root',
+'MariaKoilalou2210!',
+{
+host: 'localhost',
+dialect: 'mysql',
+}
+);
 
-const app = require('./app');
-var fs = require('fs');
-const sequelize = require('./util/database');
-const path = require('path');
-const chalk = require('chalk');
-
-var initModels = require("./models/init-models");
-const populate_db = require('./util/populate-db');
-
-const port = Number(91003);
-initModels(sequelize);
-sequelize
-    .sync({
-        // delete if system is ready to deploy
-        // force: true
-        // end
-    })
-    .then(result => {
-        if (!fs.existsSync('./uploads')) { fs.mkdirSync('./uploads'); }
-    })
-    .catch(err => console.log(err));
+sequelize.authenticate().then(() => {
+   console.log('Connection has been established successfully.');
+}).catch((error) => {
+   console.error('Unable to connect to the database: ', error);
+});
