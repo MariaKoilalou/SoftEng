@@ -1,17 +1,15 @@
-//mallon kalo
-
 const Sequelize = require('sequelize')
 
 let sequelize;
 
-if (process.env.NODE_ENV == undefined) process.env.NODE_ENV = 'run'
+if (process.env.NODE_ENV === undefined) process.env.NODE_ENV = 'run'
 
 if (process.env.NODE_ENV.trim() === 'test') {
-    sequelize = new Sequelize('SoftEng22-69', 'root', 'SoftEng22-69', {
+    sequelize = new Sequelize('SoftEng22-69-test', 'root', 'SoftEng22-69', {
         dialect: 'mysql',
         protocol: 'mysql',
         host: 'localhost',
-        port: '3306',
+        port: '8080',
         logging: false
     });
 }
@@ -20,7 +18,7 @@ else {
         dialect: 'mysql',
         protocol: 'mysql',
         host: 'localhost',
-        port: '3306',
+        port: '8080',
         logging: false
     });
 }
