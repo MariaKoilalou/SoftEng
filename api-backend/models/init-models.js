@@ -6,6 +6,7 @@ var _questionnaire = require("./questionnaire");
 var _session = require("./session");
 var _user = require("./user");
 var _system_admins = require("./system_admin");
+var _expired_tokens = require("./expired_tokens");
 
 function initModels(sequelize) {
     var answer = _answer(sequelize, DataTypes);
@@ -15,6 +16,7 @@ function initModels(sequelize) {
     var session = _session(sequelize, DataTypes);
     var user = _user(sequelize, DataTypes);
     var system_admins = _system_admins(sequelize, DataTypes);
+    var expired_tokens = _expired_tokens(sequelize, DataTypes);
 
 
     questionnaire.belongsTo(user, { foreignKey: "Author_id"});
@@ -41,6 +43,7 @@ function initModels(sequelize) {
         session,
         user,
         system_admins,
+        expired_tokens
     };
 }
 module.exports = initModels;

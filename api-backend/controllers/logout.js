@@ -1,4 +1,4 @@
-//mallon kala
+
 
 // require models
 const sequelize = require('../util/database');
