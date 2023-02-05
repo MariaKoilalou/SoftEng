@@ -1,5 +1,3 @@
-//mallon kalo
-
 // middleware for doing role-based permissions
 function permit(...permittedRoles) {
     // return a middleware

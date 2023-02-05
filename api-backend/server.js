@@ -1,27 +1,23 @@
-const Sequelize = require("sequelize");
-const sequelize = new Sequelize(
-'intelliq_api',
-'root',
-'MariaKoilalou2210!',
-{
-host: 'localhost',
-dialect: 'mysql',
-}
-);
+const app = require('./app');
+const https = require('https');
+var fs = require('fs');
+const sequelize = require('./util/database');
+const path = require('path');
+const chalk = require('chalk');
 
-sequelize.authenticate().then(() => {
-   console.log('Connection has been established successfully.');
-}).catch((error) => {
-   console.error('Unable to connect to the database: ', error);
-});
+var initModels = require("./models/init-models");
+const populate_db = require('./util/populate-db');
+const sslServer = require("express/lib/application");
 
-var http = require('http');
+const port = Number(9103);
 
-http.createServer(function(request, response){
-
-   //The following code will print out the incoming request text
-   request.pipe(response);
-
-}).listen(9103, 'localhost');
-
-console.log('Listening on port 9103...');
+initModels(sequelize);
+sequelize
+    .sync({
+    })
+    .then(result => {
+       // populate_db();
+       if (!fs.existsSync('./uploads')) { fs.mkdirSync('./uploads'); }
+       sslServer.listen(port, () => console.log(chalk.green(`🚀 Secure Server running on port ${port}!`)))
+    })
+    .catch(err => console.log(err));

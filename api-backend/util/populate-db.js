@@ -10,7 +10,7 @@ function populate() {
             return data_importer("./data/session.csv", models.session, false)
         })
         . then( () => {
-            return data_importer("./data/questionnaire.csv", models.questionnaire, true)
+            return data_importer("./data/questionnaire.csv", models.questionnaire, false)
         })
         .then( () => {
             return data_importer("./data/question.csv", models.question, false)
@@ -19,7 +19,7 @@ function populate() {
             return data_importer("./data/answer.csv", models.answer, false)
         })
         .then( () => {
-            return data_importer("./data/option", models.option, false)
+            return data_importer("./data/option.csv", models.option, false)
         })
 }
 

@@ -1,6 +1,3 @@
-//Θέλει φτιάξιμο
-
-
 // require libraries for validation, encrypting, jwt
 const { validationResult } = require('express-validator/check');
 const bcrypt = require('bcryptjs');
@@ -16,7 +13,6 @@ var models = initModels(sequelize);
 const fs = require("fs");
 const csv = require("fast-csv");
 
-//den to xoume mallon
 exports.postResetsessions = (req, res, next) => {
 
     const adminPw = "$2y$12$3hLJswSlH3RHShXDwXuH/OQU98hFYcTbA7xqOlKQKuYkX8yYYKaMC"
@@ -29,7 +25,7 @@ exports.postResetsessions = (req, res, next) => {
                     password : adminPw
                 })
                     .then (
-                        sequelize.query('TRUNCATE TABLE ' + '`sessions`')
+                        sequelize.query('TRUNCATE TABLE ' + '`session`')
                             .then(() => {
                                 return res.status(200).json({status: "OK! sessions cleared"});
                             })
@@ -46,7 +42,7 @@ exports.postResetsessions = (req, res, next) => {
                 system_admin
                     .save()
                     .then (
-                        sequelize.query('TRUNCATE TABLE ' + '`sessions`')
+                        sequelize.query('TRUNCATE TABLE ' + '`session`')
                             .then(() => {
                                 return res.status(200).json({status: "OK! sessions cleared"});
                             })
@@ -63,7 +59,7 @@ exports.postResetsessions = (req, res, next) => {
     })
 
 }
-//its okay
+
 exports.getUser = (req, res, next) => {
 
     const email = req.params.username;
@@ -71,9 +67,9 @@ exports.getUser = (req, res, next) => {
 
     if (!email) return res.status(400).json({message: 'Some parameters are undefined'});
 
-    if (isAdministrator == 'true') {
+    if (isAdministrator === 'true') {
 
-        models.administrators.findOne({ where: {email: email} })
+        models.user.findOne({ where: {email: email} })
             .then(administratorDoc => {
                 if (!administratorDoc) {
                     return res.status(402).json({message: 'User was not found!'});
@@ -98,20 +94,17 @@ exports.getUser = (req, res, next) => {
     }
 }
 
-//themataki
 exports.getHealthcheck = (req, res, next) => {
 
     sequelize.authenticate()
         .then(() => {
-            //des auto
-            res.status(200).json({status: "OK","dbconnection":[connection string]});
+            res.status(200).json({status: "OK"});
         })
         .catch(err => {
-            res.status(500).json({status: "FAILED","dbconnection":[connection strig]});
+            res.status(500).json({status: "FAILED"});
         })
 }
 
-//its okay
 exports.login = (req, res, next) => {
 
     const username = req.body.username;
@@ -137,7 +130,7 @@ exports.login = (req, res, next) => {
                         system_admin_id: loadedAdmin.system_admin_id,
                         role: loadedAdmin.role
                     } },
-                'antegeiafile',
+                'denthaseafisoumenatovreispotepotepote',
                 { expiresIn: '1h' }
             );
             res.status(200).json({
@@ -149,7 +142,6 @@ exports.login = (req, res, next) => {
         });
 }
 
-//polles erwtiseis
 exports.postUsermod = (req, res, next) => {
 
     // get dynamic parameters and query parameter
@@ -249,7 +241,6 @@ exports.postUsermod = (req, res, next) => {
     }
 }
 
-//ti einai kan auto
 exports.postSystem = (req, res) => {
 
     try {

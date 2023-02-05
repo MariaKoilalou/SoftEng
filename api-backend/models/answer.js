@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define("answer", {
         Answer_id: {
@@ -70,4 +69,3 @@ module.exports = function(sequelize, DataTypes) {
     ]
 });
 };
-

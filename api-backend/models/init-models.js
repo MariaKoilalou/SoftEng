@@ -5,6 +5,7 @@ var _question = require("./question");
 var _questionnaire = require("./questionnaire");
 var _session = require("./session");
 var _user = require("./user");
+var _system_admins = require("./system_admin");
 
 function initModels(sequelize) {
     var answer = _answer(sequelize, DataTypes);
@@ -13,6 +14,8 @@ function initModels(sequelize) {
     var questionnaire = _questionnaire(sequelize, DataTypes);
     var session = _session(sequelize, DataTypes);
     var user = _user(sequelize, DataTypes);
+    var system_admins = _system_admins(sequelize, DataTypes);
+
 
     questionnaire.belongsTo(user, { foreignKey: "Author_id"});
     user.hasMany(questionnaire, {foreignKey: "Author_id",onDelete: 'cascade', onUpdate: 'cascade'});
@@ -36,7 +39,8 @@ function initModels(sequelize) {
         question,
         questionnaire,
         session,
-        user
+        user,
+        system_admins,
     };
 }
 module.exports = initModels;

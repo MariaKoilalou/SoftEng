@@ -1,7 +1,4 @@
-//Θέλει φτιάξιμο
 
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const sequelize = require('../util/database');
 
 var initModels = require("../models/init-models");

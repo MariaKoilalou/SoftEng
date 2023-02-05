@@ -1,5 +1,3 @@
-//kalo mallon
-
 const jwt = require('jsonwebtoken');
 
 // require models

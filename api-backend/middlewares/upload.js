@@ -1,5 +1,3 @@
-//mallon kalo
-
 const multer = require("multer");
 
 const csvFilter = (req, file, cb) => {

@@ -1,11 +1,10 @@
 const Sequelize = require('sequelize');
-
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define("user", {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primarykey: true
+            primaryKey: true
         },
         username: {
             type: DataTypes.STRING,
@@ -15,9 +14,13 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        admin: {
-            type: DataTypes.INTEGER(1),
-            allowNull: true
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false
+            },
+        role: {
+            type: DataTypes.STRING,
+            defaultValue: 'admin',
         }
     },
         {
@@ -41,8 +44,15 @@ module.exports = function(sequelize, DataTypes) {
                         { name: "id" },
                     ]
                 },
-            ]
+                {
+                    name: "email_UNIQUE",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        {name: "email"},
+                    ]
+                },
+                ]
         });
 };
-
 
