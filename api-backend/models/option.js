@@ -34,15 +34,15 @@ module.exports = function(sequelize, DataTypes) {
                 key: 'Answer_id'
             }
         },
-        QuestionQuestion_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            references: {
-                model: 'question',
-                key: 'Question_id'
-            }
-        },
+        // QuestionQuestionOp_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     // primaryKey: true,
+        //     references: {
+        //         model: 'question',
+        //         key: 'Question_id'
+        //     }
+        // },
         Text: {
             type: DataTypes.STRING,
             allowNull: true
@@ -70,7 +70,8 @@ module.exports = function(sequelize, DataTypes) {
                         {name: "SessionSession_id"},
                         {name: "AnswerAnswer_id"},
                         {name: "Userid"},
-                        {name: "QuestionQuestion_id"}
+
+
                     ]
                 },
                 {
@@ -89,14 +90,14 @@ module.exports = function(sequelize, DataTypes) {
                         { name: "SessionSession_id" },
                     ]
                 },
-                {
-                    name: "QuestionQuestion_id_UNIQUE",
-                    unique: true,
-                    using: "BTREE",
-                    fields: [
-                        { name: "QuestionQuestion_id" },
-                    ]
-                },
+                // {
+                //     name: "QuestionQuestionOp_id_UNIQUE",
+                //     unique: true,
+                //     using: "BTREE",
+                //     fields: [
+                //         { name: "QuestionQuestionOp_id" },
+                //     ]
+                // },
                 {
                     name: "Userid_UNIQUE",
                     unique: true,

@@ -12,8 +12,8 @@ module.exports = function(sequelize, DataTypes) {
         },
         QuestionQuestion_id: {
             type: DataTypes.INTEGER,
-            allowNull: true,
-            primaryKey: true,
+            allowNull: false,
+            // primaryKey: false,
             references: {
                 model: 'question',
                 key: 'Question_id'
@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         QuestionnaireQuestionnaire_id: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
             references: {
                 model: 'questionnaire',
                 key: 'Questionnaire_id'
@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
             using: "BTREE",
             fields: [
                 { name: "Answer_id" },
-                {name: "QuestionQuestion_id"},
+                // {name: "QuestionQuestion_id"},
             ]
         },
         {

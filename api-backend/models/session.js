@@ -5,19 +5,19 @@ module.exports = function(sequelize, DataTypes) {
         Session_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primarykey: true
+            primaryKey: true
         },
         Userid: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primarykey: true,
+            primaryKey: true,
             references: {
                 model: 'user',
                 key: 'id'
             }
         },
         date: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.DATE,
             allowNull: true
         }
     },

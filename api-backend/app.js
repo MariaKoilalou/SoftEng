@@ -27,10 +27,10 @@ app.use((req, res, next) => {
 app.use('/intelliq_api/admin', admin);
 app.use('/intelliq_api/login', login);
 app.use('/intelliq_api/logout',logout);
-app.use('/intelliq_api/question', question);
-app.use('/intelliq_api/questionnaire', questionnaire);
-app.use('/intelliq_api/doanswer', doanswer);
-app.use('/intelliq_api/qetsessionanswers', getsessionanswers);
+// app.use('/intelliq_api/question', question);
+// app.use('/intelliq_api/questionnaire', questionnaire);
+// app.use('/intelliq_api/doanswer', doanswer);
+// app.use('/intelliq_api/qetsessionanswers', getsessionanswers);
 // /*End of routes used by our project */
 
 // In case of an endpoint does not exist

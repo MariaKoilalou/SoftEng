@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         Mandatory: {
             type: DataTypes.INTEGER(1),
-            allowNull: true
+            allowNull: false
         },
         QuestionnaireQuestionnaire_id: {
             type: DataTypes.INTEGER,
