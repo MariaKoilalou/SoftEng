@@ -7,6 +7,16 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             primaryKey: true
         },
+        Keywords: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+            get() {
+                return this.getDataValue('Keywords') ? this.getDataValue('Keywords').split(',') : [];
+            },
+            set(value) {
+                this.setDataValue('Keywords', value.join(','));
+            }
+        },
         Author_id: {
             type: DataTypes.INTEGER,
             allowNull: false,

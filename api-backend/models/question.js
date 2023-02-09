@@ -11,6 +11,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
+        Type: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         Mandatory: {
             type: DataTypes.INTEGER(1),
             allowNull: false

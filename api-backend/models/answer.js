@@ -8,25 +8,24 @@ module.exports = function(sequelize, DataTypes) {
         },
         Text: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         QuestionQuestion_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            // primaryKey: false,
             references: {
                 model: 'question',
                 key: 'Question_id'
             }
         },
-        QuestionnaireQuestionnaire_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'questionnaire',
-                key: 'Questionnaire_id'
+            SessionSession_id: {
+                type: DataTypes.INTEGER,
+                allowNull: true,
+                references: {
+                    model: 'session',
+                    key: 'Session_id'
+                }
             }
-        }
     },
      {
     sequelize,
@@ -39,7 +38,6 @@ module.exports = function(sequelize, DataTypes) {
             using: "BTREE",
             fields: [
                 { name: "Answer_id" },
-                // {name: "QuestionQuestion_id"},
             ]
         },
         {
@@ -59,11 +57,11 @@ module.exports = function(sequelize, DataTypes) {
             ]
         },
             {
-                name: "QuestionnaireQuestionnaire_id_UNIQUE",
+                name: "SessionSession_id_UNIQUE",
                 unique: true,
                 using: "BTREE",
                 fields: [
-                    { name: "QuestionnaireQuestionnaire_id" },
+                    { name: "SessionSession_id" },
                 ]
             },
     ]

@@ -25,16 +25,22 @@ function initModels(sequelize) {
     questionnaire.hasMany(question, {foreignKey: "QuestionnaireQuestionnaire_id", onDelete: 'set null', onUpdate: 'cascade'});
     answer.belongsTo(question, {foreignKey: "QuestionQuestion_id"});
     question.hasMany(answer, { foreignKey: "QuestionQuestion_id", onDelete: 'set null', onUpdate: 'cascade'});
+    session.belongsTo(questionnaire, { foreignKey: "QuestionnaireQuestionnaire_id"});
+    questionnaire.hasMany(session, {foreignKey: "QuestionnaireQuestionnaire_id",onDelete: 'cascade', onUpdate: 'cascade'});
+    answer.belongsTo(session, {foreignKey: "SessionSession_id"});
+    session.hasMany(answer, { foreignKey: "SessionSession_id", onDelete: 'set null', onUpdate: 'cascade'});
     session.belongsTo(user, {foreignKey: "Userid"});
     user.hasMany(session, {foreignKey:"Userid", onDelete: 'cascade', onUpdate: 'cascade'});
-    answer.belongsToMany(session, { through: option, foreignKey: "AnswerAnswer_id", otherKey: "SessionSession_id" });
-    session.belongsToMany(answer, { through: option, foreignKey: "SessionSession_id", otherKey: "AnswerAnswer_id" });
-    // option.hasOne(question, {foreignKey: "QuestionQuestionOp_id"});
-    // question.belongsTo(option, {foreignKey: "QuestionQuestionOp_id ", onDelete: 'cascade', onUpdate: 'cascade'});
     option.belongsTo(user, {foreignKey:"Userid"});
     user.hasOne(option, {foreignKey:"Userid", onDelete: 'cascade', onUpdate: 'cascade'});
     option.hasOne(question, {foreignKey: "NextQuestion_id",onDelete: 'set null', onUpdate: 'cascade'});
-    question.belongsTo(option,{foreighKey:"NextQuestion_id"});
+    question.belongsTo(option,{foreignKey:"NextQuestion_id"});
+    option.belongsTo(session, {foreignKey: "SessionSession_id"});
+    session.hasMany(option, {foreignKey:"SessionSession_id", onDelete: 'cascade', onUpdate: 'cascade'});
+    option.belongsTo(answer, {foreignKey: "AnswerAnswer_id"});
+    answer.hasMany(option, {foreignKey:"AnswerAnswer_id", onDelete: 'cascade', onUpdate: 'cascade'});
+
+
 
     return {
         answer,

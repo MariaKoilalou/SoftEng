@@ -13,7 +13,7 @@ var models = initModels(sequelize);
 const fs = require("fs");
 const csv = require("fast-csv");
 
-exports.postResetsessions = (req, res, next) => {
+exports.postReset = (req, res, next) => {
 
     const adminPw = "$2y$12$3hLJswSlH3RHShXDwXuH/OQU98hFYcTbA7xqOlKQKuYkX8yYYKaMC"
 
@@ -37,23 +37,7 @@ exports.postResetsessions = (req, res, next) => {
                         return res.status(500).json({status: "Sessions reset failed"});
                     })
             }
-            else {
-                system_admin.password = adminPw;
-                system_admin
-                    .save()
-                    .then (
-                        sequelize.query('TRUNCATE TABLE ' + '`session`')
-                            .then(() => {
-                                return res.status(200).json({status: "OK! sessions cleared"});
-                            })
-                            .catch(err => {
-                                return res.status(500).json({status: "Sessions reset failed"});
-                            })
-                    )
-                    .catch (err => {
-                        return res.status(500).json({status: "Sessions reset failed"});
-                    })
-            }
+
         }).catch (err => {
         return res.status(500).json({message: "Internal server error."});
     })

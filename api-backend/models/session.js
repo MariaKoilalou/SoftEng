@@ -16,6 +16,15 @@ module.exports = function(sequelize, DataTypes) {
                 key: 'id'
             }
         },
+        QuestionnaireQuestionnaire_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            primaryKey: false,
+            references: {
+                model: 'questionnaire',
+                key: 'Questionnaire_id'
+            }
+        },
         date: {
             type: DataTypes.DATE,
             allowNull: true
@@ -49,6 +58,14 @@ module.exports = function(sequelize, DataTypes) {
                     using: "BTREE",
                     fields: [
                         { name: "Userid" },
+                    ]
+                },
+                {
+                    name: "QuestionnaireQuestionnaire_id_UNIQUE",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        { name: "QuestionnaireQuestionnaire_id" },
                     ]
                 },
             ]
