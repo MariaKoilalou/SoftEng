@@ -1,2 +1,2 @@
-"id","username","password","email","role"
+"id","username","name","password","email","role"
 "1","marykoilalaou","Maria Koilalou","12345","mariakoilalou@gmail.com","admin"
