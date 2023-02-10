@@ -14,7 +14,7 @@ def doanswer(ar):
     if (ar.format == 'csv'):
         url = url + '?format=csv'
     headers = {'x-observatory-auth' : ar.apikey}
-    res = requests.get(url,data = ar.option_id, headers=headers, verify=False)
+    res = requests.post(url,data = ar.option_id, headers=headers, verify=False)
     print(res.status_code)
     if (ar.format == 'json' and res.status_code == 200):
         print(json.dumps(res.json(), indent=4, sort_keys=False))
