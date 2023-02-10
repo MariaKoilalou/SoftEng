@@ -8,6 +8,6 @@ const permit = require('../middlewares/authorization')
 
 const router = express.Router();
 
-//router.get('/:questionnaireID/:questionID', questionController.getQuestion);
+// router.get('/:questionnaireID/:questionID', questionController.getQuestion);
 
 module.exports = router;

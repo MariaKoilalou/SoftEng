@@ -9,3 +9,5 @@ const permit = require('../middlewares/authorization')
 const router = express.Router();
 
 // router.get('/:questionnaireID', questionnaireController.getQuestionnaire);
+
+module.exports = router;

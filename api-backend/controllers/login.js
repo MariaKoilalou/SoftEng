@@ -4,6 +4,8 @@ const sequelize = require('../util/database');
 var initModels = require("../models/init-models");
 const jwt = require("jsonwebtoken");
 var models = initModels(sequelize);
+const bcrypt = require("bcryptjs");
+
 
 module.exports = (req, res, next) => {
     const email = req.body.email;
@@ -14,7 +16,7 @@ module.exports = (req, res, next) => {
     let loadedUser;
     const isAdministrator = req.query.isAdministrator;
     // check for administrator
-    if (isAdministrator == 'true') {
+    if (isAdministrator === 'true') {
         models.user.findOne({where: {email: email}})
             .then(administratorUser => {
                 if (!administratorUser) {
@@ -50,4 +52,4 @@ module.exports = (req, res, next) => {
                 return res.status(500).json({message: 'Internal server error.'})
             });
     }
-}
+};

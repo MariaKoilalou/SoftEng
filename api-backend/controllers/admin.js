@@ -161,7 +161,7 @@ exports.postUsermod = (req, res, next) => {
                 return res.status(500).json({message: 'Internal server error.'})
             });
     }
-}
+};
 
 exports.postQuestionnaire = async (req, res) => {
 
@@ -219,9 +219,9 @@ exports.postQuestionnaireUpt = (req, res) => {
                     .then(() => {
                         models.question.bulkCreate(question,{ validate: true })
                             .then(() => {
-                                models.answer.bulkCreate(answer,{ validate: true })
+                                models.option.bulkCreate(answer,{ validate: true })
                                     .then(() => {
-                                        return models.answer.count();
+                                        return models.option.count();
                                         }
                                     )
                             })

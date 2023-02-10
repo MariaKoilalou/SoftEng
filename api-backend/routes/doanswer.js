@@ -9,3 +9,5 @@ const permit = require('../middlewares/authorization')
 const router = express.Router();
 
 // router.post('/:questionnaireID/:questionID/:session/:optionID', doanswerController.postDoAnswer);
+
+module.exports = router;
