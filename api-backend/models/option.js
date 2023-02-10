@@ -7,34 +7,25 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             primaryKey: true
         },
-        SessionSession_id: {
+        QuestionnaireQuestionnaire_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             references: {
-                model: 'session',
-                key: 'Session_id'
+                model: 'questionnaire',
+                key: 'Questionnaire_id'
             }
         },
-        Userid: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        AnswerAnswer_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            references: {
-                model: 'answer',
-                key: 'Answer_id'
-            }
-        },
-        Text: {
+            QuestionQuestion_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                primaryKey: true,
+                references: {
+                    model: 'question',
+                    key: 'Question_id'
+                }
+            },
+        OptText: {
             type: DataTypes.STRING,
             allowNull: true
         },
@@ -58,33 +49,22 @@ module.exports = function(sequelize, DataTypes) {
                     using: "BTREE",
                     fields: [
                         { name: "Option_id" },
-                        {name: "SessionSession_id"},
-                        {name: "AnswerAnswer_id"},
-                        {name: "Userid"},
                     ]
                 },
                 {
-                    name: "AnswerAnswer_id_UNIQUE",
+                    name: "QuestionQuestion_id_UNIQUE",
                     unique: true,
                     using: "BTREE",
                     fields: [
-                        { name: "AnswerAnswer_id" },
+                        { name: "QuestionQuestion_id" },
                     ]
                 },
                 {
-                    name: "SessionSession_id_UNIQUE",
+                    name: "QuestionnaireQuestionnaire_UNIQUE",
                     unique: true,
                     using: "BTREE",
                     fields: [
-                        { name: "SessionSession_id" },
-                    ]
-                },
-                {
-                    name: "Userid_UNIQUE",
-                    unique: true,
-                    using: "BTREE",
-                    fields: [
-                        { name: "Userid" },
+                        { name: "QuestionnaireQuestionnaire_id" },
                     ]
                 },
                 {

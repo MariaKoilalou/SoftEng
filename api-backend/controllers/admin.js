@@ -117,11 +117,11 @@ exports.login = (req, res, next) => {
 exports.postUsermod = (req, res, next) => {
 
     // get dynamic parameters and query parameter
-    const email = req.params.username;
+    const username = req.params.username;
     const password = req.params.password;
     const isAdministrator = req.query.isAdministrator;
 
-    if (!email || !password) return res.status(400).json({message: 'Some parameters are undefined'});
+    if (!username || !password) return res.status(400).json({message: 'Some parameters are undefined'});
 
     // if the user is administrator user
     if (isAdministrator === 'true') {
@@ -163,60 +163,131 @@ exports.postUsermod = (req, res, next) => {
     }
 }
 
-// exports.postSystem = (req, res) => {
-//
+exports.postQuestionnaire = async (req, res) => {
+
+    let answer = [];
+
+    const questionnaireID = req.body.questionnaireID;
+
+    try {
+        const deletedAnswers = await answer.destroy({
+            where: {QuestionQuestion_id: questionnaireID}
+        });
+        res.json({status: 'OK'});
+    } catch (error) {
+        res.status(500).json({
+            status: 'failed',
+            reason: error.message
+        });
+    }
+};
+
+exports.postQuestionnaireUpt = (req, res) => {
+
+    try {
+        if (req.file == undefined) {
+            return res.status(400).send("Please upload a CSV file!");
+        }
+
+        let questionnaire = [];
+        let question = [];
+        let option = [];
+        var fail = 0;
+        let path = __dirname + "/../uploads/" + req.file.filename;
+
+        fs.createReadStream(path)
+            .pipe(csv.parse({ headers: true }))
+            .on("error", (error) => {
+                throw error.message;
+            })
+            .on("data", (row) => {
+                if (row.Questionnaire_id == '' || row.Author_id == '' ||
+                    row.Title == '' || row.Question_id == '' ||
+                    row.type == '' || row.Mandatory == '' || row.Text == '' ||
+                    row.AnswerAnswer_id == '' || row.NextQuestion_id == '') {
+                    fail = fail + 1;
+                }
+                else {
+                    if (row.rating == 'NULL') {
+                        row.rating = null;
+                    }
+                    sessions.push(row);
+                }
+            })
+            .on("end", () => {
+                models.questionnaire.bulkCreate(questionnaire,{ validate: true })
+                    .then(() => {
+                        models.question.bulkCreate(question,{ validate: true })
+                            .then(() => {
+                                models.answer.bulkCreate(answer,{ validate: true })
+                                    .then(() => {
+                                        return models.answer.count();
+                                        }
+                                    )
+                            })
+
+                    })
+                    .then(totalAnswers => {
+                        res.status(201).send({
+                            SessionsInUploadedFile: answer.length + fail,
+                            SessionsImported: answer.length,
+                            TotalSessionsInDatabase: totalAnswers
+                        });
+                    })
+                    .catch((error) => {
+                        res.status(500).send({
+                            message: "Fail to import data into database!",
+                            error: error.message
+                        });
+                    });
+
+            });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            message: "Could not upload the file: " + req.file.originalname,
+        });
+    }
+};
+
+// exports.postQuestionnaireUpt = (req, res) => {
 //     try {
-//         if (req.file == undefined) {
-//             return res.status(400).send("Please upload a CSV file!");
+//         if (!req.file) {
+//             return res.status(400).send({
+//                 status: "failed",
+//                 reason: "Please upload a JSON file!"
+//             });
 //         }
 //
-//         let sessions = [];
-//         var fail = 0;
-//         let path = __dirname + "/../uploads/" + req.file.filename;
+//         const path = `${__dirname}/../uploads/${req.file.filename}`;
+//         let questionnaire = null;
+//         let questions = [];
+//         let fail = 0;
 //
-//         fs.createReadStream(path)
-//             .pipe(csv.parse({ headers: true }))
-//             .on("error", (error) => {
-//                 throw error.message;
-//             })
-//             .on("data", (row) => {
-//                 if (row.driven_byowner_id == '' || row.driven_byregistered_carslicense_plate == '' ||
-//                     row.charging_pointspoint_id == '' || row.charging_pointscharging_stationsstation_id == '' ||
-//                     row.connectionTime == '' || row.disconnectTime == '' || row.kWhDelivered == '' ||
-//                     row.protocol == '' || row.payment == '' || row.cost == '' || row.vehicle_type == '' || row.rating == '') {
-//                     fail = fail + 1;
-//                 }
-//                 else {
-//                     if (row.rating == 'NULL') {
-//                         row.rating = null;
+//         fs.readFile(path, (err, data) => {
+//             if (err) {
+//                 return res.status(500).send({
+//                     status: "failed",
+//                     reason: `Could not upload the file: ${req.file.originalname}`,
+//                     error: err.message
+//                 });
+//             }
+//
+//             try {
+//                 const jsonData = JSON.parse(data);
+//                 questionnaire = {
+//                     questionnaireID: jsonData.questionnaireID,
+//                     questionnaireTitle: jsonData.questionnaireTitle,
+//                     keywords: jsonData.keywords
+//                 };
+//
+//                 for (let i = 0; i < jsonData.questions.length; i++) {
+//                     const question = jsonData.questions[i];
+//                     if (!question.qID || !question.qtext || !question.required || !question.type || !question.options) {
+//                         fail++;
+//                         continue;
 //                     }
-//                     sessions.push(row);
-//                 }
-//             })
-//             .on("end", () => {
-//                 models.sessions.bulkCreate(sessions)
-//                     .then(() => {
-//                         return models.sessions.count();
-//                     })
-//                     .then(totalSessions => {
-//                         res.status(201).send({
-//                             SessionsInUploadedFile: sessions.length + fail,
-//                             SessionsImported: sessions.length,
-//                             TotalSessionsInDatabase: totalSessions
-//                         });
-//                     })
-//                     .catch((error) => {
-//                         res.status(500).send({
-//                             message: "Fail to import data into database!",
-//                             error: error.message
-//                         });
-//                     });
 //
-//             });
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).send({
-//             message: "Could not upload the file: " + req.file.originalname,
-//         });
-//     }
-// };
+//                     let options = [];
+//                     for (let j = 0; j < question.options.length; j++) {
+//                         const option = question.

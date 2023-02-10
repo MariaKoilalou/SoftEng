@@ -22,23 +22,22 @@ function initModels(sequelize) {
     questionnaire.belongsTo(user, { foreignKey: "Author_id"});
     user.hasMany(questionnaire, {foreignKey: "Author_id",onDelete: 'cascade', onUpdate: 'cascade'});
     question.belongsTo(questionnaire,{foreignKey: "QuestionnaireQuestionnaire_id"});
-    questionnaire.hasMany(question, {foreignKey: "QuestionnaireQuestionnaire_id", onDelete: 'set null', onUpdate: 'cascade'});
+    questionnaire.hasMany(question, {foreignKey: "QuestionnaireQuestionnaire_id", onDelete: 'cascade', onUpdate: 'cascade'});
     answer.belongsTo(question, {foreignKey: "QuestionQuestion_id"});
-    question.hasMany(answer, { foreignKey: "QuestionQuestion_id", onDelete: 'set null', onUpdate: 'cascade'});
+    question.hasMany(answer, { foreignKey: "QuestionQuestion_id", onDelete: 'cascade', onUpdate: 'cascade'});
     session.belongsTo(questionnaire, { foreignKey: "QuestionnaireQuestionnaire_id"});
     questionnaire.hasMany(session, {foreignKey: "QuestionnaireQuestionnaire_id",onDelete: 'cascade', onUpdate: 'cascade'});
     answer.belongsTo(session, {foreignKey: "SessionSession_id"});
     session.hasMany(answer, { foreignKey: "SessionSession_id", onDelete: 'set null', onUpdate: 'cascade'});
     session.belongsTo(user, {foreignKey: "Userid"});
     user.hasMany(session, {foreignKey:"Userid", onDelete: 'cascade', onUpdate: 'cascade'});
-    option.belongsTo(user, {foreignKey:"Userid"});
-    user.hasOne(option, {foreignKey:"Userid", onDelete: 'cascade', onUpdate: 'cascade'});
+    option.hasOne(question, {foreignKey: "QuestionQuestion_id",onDelete: 'cascade', onUpdate: 'cascade'});
+    question.belongsTo(option,{foreignKey:"QuestionQuestion_id"});
     option.hasOne(question, {foreignKey: "NextQuestion_id",onDelete: 'set null', onUpdate: 'cascade'});
     question.belongsTo(option,{foreignKey:"NextQuestion_id"});
-    option.belongsTo(session, {foreignKey: "SessionSession_id"});
-    session.hasMany(option, {foreignKey:"SessionSession_id", onDelete: 'cascade', onUpdate: 'cascade'});
-    option.belongsTo(answer, {foreignKey: "AnswerAnswer_id"});
-    answer.hasMany(option, {foreignKey:"AnswerAnswer_id", onDelete: 'cascade', onUpdate: 'cascade'});
+    option.belongsTo(questionnaire, {foreignKey: "QuestionnaireQuestionnaire_id"});
+    questionnaire.hasMany(option, {foreignKey:"QuestionnaireQuestionnaire_id", onDelete: 'cascade', onUpdate: 'cascade'});
+
 
 
 

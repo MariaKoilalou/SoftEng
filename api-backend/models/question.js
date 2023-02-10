@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        Type: {
+        type: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -60,5 +60,6 @@ module.exports = function(sequelize, DataTypes) {
         ]
     });
 };
+
 
 
