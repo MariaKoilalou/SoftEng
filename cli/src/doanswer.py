@@ -10,11 +10,11 @@ from prettytable import DEFAULT
 # MAYBE PUT OPTION_ID AS DATA IN POST, AND HAVE URL GO TO SESSION
 
 def doanswer(ar): 
-    url = 'http://localhost:9103/intelliq_api/doanswer/' + ar.questionnaire_id + '/' + ar.question_id + '/' + ar.session_id + '/' + ar.option_id
+    url = 'http://localhost:9103/intelliq_api/doanswer/' + ar.questionnaire_id + '/' + ar.question_id + '/' + ar.session_id
     if (ar.format == 'csv'):
         url = url + '?format=csv'
     headers = {'x-observatory-auth' : ar.apikey}
-    res = requests.get(url, headers=headers, verify=False)
+    res = requests.get(url,data = ar.option_id, headers=headers, verify=False)
     print(res.status_code)
     if (ar.format == 'json' and res.status_code == 200):
         print(json.dumps(res.json(), indent=4, sort_keys=False))
