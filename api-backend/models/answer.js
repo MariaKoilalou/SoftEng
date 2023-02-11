@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define("answer", {
         Answer_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true
         },
@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         QuestionQuestion_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             references: {
                 model: 'question',
@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
             SessionSession_id: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 allowNull: true,
                 references: {
                     model: 'session',

@@ -182,112 +182,76 @@ exports.postQuestionnaire = async (req, res) => {
     }
 };
 
-exports.postQuestionnaireUpt = (req, res) => {
-
+exports.postQuestionnaire = (req, res) => {
     try {
-        if (req.file == undefined) {
-            return res.status(400).send("Please upload a CSV file!");
+        if (!req.file) {
+            return res.status(400).send({ message: "Please upload a JSON file!" });
         }
 
-        let questionnaire = [];
-        let question = [];
-        let option = [];
-        var fail = 0;
-        let path = __dirname + "/../uploads/" + req.file.filename;
+        const filePath = path.join(__dirname, "..", "uploads", req.file.filename);
 
-        fs.createReadStream(path)
-            .pipe(csv.parse({ headers: true }))
-            .on("error", (error) => {
-                throw error.message;
-            })
-            .on("data", (row) => {
-                if (row.Questionnaire_id == '' || row.Author_id == '' ||
-                    row.Title == '' || row.Question_id == '' ||
-                    row.type == '' || row.Mandatory == '' || row.Text == '' ||
-                    row.AnswerAnswer_id == '' || row.NextQuestion_id == '') {
-                    fail = fail + 1;
-                }
-                else {
-                    if (row.rating == 'NULL') {
-                        row.rating = null;
-                    }
-                    sessions.push(row);
-                }
-            })
-            .on("end", () => {
-                models.questionnaire.bulkCreate(questionnaire,{ validate: true })
-                    .then(() => {
-                        models.question.bulkCreate(question,{ validate: true })
-                            .then(() => {
-                                models.option.bulkCreate(answer,{ validate: true })
-                                    .then(() => {
-                                        return models.option.count();
-                                        }
-                                    )
-                            })
+        fs.readFile(filePath, (err, data) => {
+            if (err) {
+                return res.status(500).send({
+                    message: "Could not read the file: " + req.file.originalname,
+                });
+            }
 
-                    })
-                    .then(totalAnswers => {
-                        res.status(201).send({
-                            SessionsInUploadedFile: answer.length + fail,
-                            SessionsImported: answer.length,
-                            TotalSessionsInDatabase: totalAnswers
-                        });
-                    })
-                    .catch((error) => {
-                        res.status(500).send({
-                            message: "Fail to import data into database!",
-                            error: error.message
-                        });
+            const questionnaireData = JSON.parse(data);
+            const questionnaireModels = [];
+            const questionModels = [];
+            const optionModels = [];
+
+            questionnaireData.forEach((questionnaire) => {
+                questionnaireModels.push({
+                    Questionnaire_id: questionnaire.questionnaireID,
+                    Title: questionnaire.questionnaireTitle,
+                    Keywords: questionnaire.keywords,
+                });
+
+                questionnaire.questions.forEach((question) => {
+                    questionModels.push({
+                        Question_id: question.qID,
+                        type: question.type,
+                        Text: question.qtext,
+                        Mandatory: question.require,
+                        Questionnaire_id: questionnaire.questionnaireID,
                     });
 
+                    question.options.forEach((option) => {
+                        optionModels.push({
+                            Option_id: option.optID,
+                            OptText: option.opttxt,
+                            NextQuestion_id: option.nextqID,
+                            Question_id: question.qID,
+                        });
+                    });
+                });
             });
+
+            Promise.all([
+                models.questionnaire.bulkCreate(questionnaireModels),
+                models.question.bulkCreate(questionModels),
+                models.option.bulkCreate(optionModels),
+            ])
+                .then(() => {
+                    return res.status(201).send({
+                        message: "Questionnaire data has been successfully inserted into the database!",
+                    });
+                })
+                .catch((error) => {
+                    return res.status(500).send({
+                        message: "Failed to insert questionnaire data into the database!",
+                        error: error.message,
+                    });
+                });
+        });
     } catch (error) {
-        console.log(error);
-        res.status(500).send({
+        return res.status(500).send({
             message: "Could not upload the file: " + req.file.originalname,
         });
     }
 };
 
-// exports.postQuestionnaireUpt = (req, res) => {
-//     try {
-//         if (!req.file) {
-//             return res.status(400).send({
-//                 status: "failed",
-//                 reason: "Please upload a JSON file!"
-//             });
-//         }
-//
-//         const path = `${__dirname}/../uploads/${req.file.filename}`;
-//         let questionnaire = null;
-//         let questions = [];
-//         let fail = 0;
-//
-//         fs.readFile(path, (err, data) => {
-//             if (err) {
-//                 return res.status(500).send({
-//                     status: "failed",
-//                     reason: `Could not upload the file: ${req.file.originalname}`,
-//                     error: err.message
-//                 });
-//             }
-//
-//             try {
-//                 const jsonData = JSON.parse(data);
-//                 questionnaire = {
-//                     questionnaireID: jsonData.questionnaireID,
-//                     questionnaireTitle: jsonData.questionnaireTitle,
-//                     keywords: jsonData.keywords
-//                 };
-//
-//                 for (let i = 0; i < jsonData.questions.length; i++) {
-//                     const question = jsonData.questions[i];
-//                     if (!question.qID || !question.qtext || !question.required || !question.type || !question.options) {
-//                         fail++;
-//                         continue;
-//                     }
-//
-//                     let options = [];
-//                     for (let j = 0; j < question.options.length; j++) {
-//                         const option = question.
+
+

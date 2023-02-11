@@ -16,7 +16,7 @@ const randomNames = [
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define("user", {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true
         },

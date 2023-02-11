@@ -3,12 +3,12 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define("session", {
         Session_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true
         },
         Userid: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
             references: {
@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         QuestionnaireQuestionnaire_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: true,
             primaryKey: false,
             references: {
