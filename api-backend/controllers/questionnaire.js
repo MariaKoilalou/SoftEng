@@ -14,10 +14,13 @@ exports.getQuestionnaire = async (req, res) => {
       where: { Questionnaire_id: id },
       include: [
         {
-          model: models.question,
-          as: "questions",
-          attributes: ["Question_id", "Text", "type", "Mandatory"],
-          order: [["Question_id", "ASC"]]
+            model: models.question,
+            as: "questions",
+            where: {
+              QuestionnaireQuestionnaire_id: id
+            },
+            attributes: ["Question_id", "Text", "Type", "Mandatory"],
+            order: [["Question_id", "ASC"]]
         }
       ],
       attributes: ["Questionnaire_id", "Title", "Keywords"]
