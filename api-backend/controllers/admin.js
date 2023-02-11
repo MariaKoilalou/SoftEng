@@ -182,7 +182,7 @@ exports.postQuestionnaire = async (req, res) => {
     }
 };
 
-exports.postQuestionnaire = (req, res) => {
+exports.postQuestionnaireUpd = (req, res) => {
     try {
         if (!req.file) {
             return res.status(400).send({ message: "Please upload a JSON file!" });
