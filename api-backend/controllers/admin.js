@@ -165,13 +165,13 @@ exports.postUsermod = (req, res, next) => {
 
 exports.postQuestionnaire = async (req, res) => {
 
-    let answer = [];
+    let option = [];
 
     const questionnaireID = req.body.questionnaireID;
 
     try {
-        const deletedAnswers = await answer.destroy({
-            where: {QuestionQuestion_id: questionnaireID}
+        const deletedOptions = await option.destroy({
+            where: {QuestionnaireQuestionnaire_id: questionnaireID}
         });
         res.json({status: 'OK'});
     } catch (error) {
