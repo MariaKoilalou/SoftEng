@@ -7,8 +7,8 @@ const op = Sequelize.Op;
 
 exports.getQuestionnaire = async (req, res) => {
   try {
-    id = req.id
-    format = req.query.format
+    const id = req.params.id;
+    const format = req.query.format;
 
     const questionnaire = await models.questionnaire.findOne({
       where: { Questionnaire_id: id },
