@@ -16,10 +16,8 @@ exports.getQuestionnaire = async (req, res) => {
         {
             model: models.question,
             as: "questions",
-            where: {
-              QuestionnaireQuestionnaire_id: id
-            },
-            attributes: ["Question_id", "Text", "Type", "Mandatory"],
+            where: { QuestionnaireQuestionnaire_id: id},
+            attributes: ["Question_id", "Text", "type", "Mandatory"],
             order: [["Question_id", "ASC"]]
         }
       ],
@@ -41,6 +39,7 @@ exports.getQuestionnaire = async (req, res) => {
     }
 
     return res.json(questionnaire);
+    
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ msg: "Server error" });
