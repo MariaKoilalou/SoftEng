@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 // const db = require("../../models");
 // const sequelize = require("sequelize");
 // const { Op } = require("sequelize");
@@ -20,7 +22,7 @@
 //       else {
 //         admin_flag = true;
 //       }
-//
+
 //       // check that user: req.userId is a vehicle owner
 //       // and check that user: req.userId is an owner for the vehicle: req.params.vehicleID
 //       db.owner.findOne({
@@ -46,7 +48,7 @@
 //             timestamp.setTime( timestamp.getTime() - new Date().getTimezoneOffset()*60*1000 );
 //             const start_date = datetime_from_int(req.params.yyyymmdd_from, true);
 //             const end_date = datetime_from_int(req.params.yyyymmdd_to, false);
-//
+
 //             db.session.findAll({
 //               where: {
 //                 vehicle_id: req.params.vehicleID,
@@ -178,3 +180,4 @@
 //     res.status(400).send({ message: err.message });
 //     });
 // };
+>>>>>>> fafdf6609448f39bde89df458ae04d84ca3fbe3c
