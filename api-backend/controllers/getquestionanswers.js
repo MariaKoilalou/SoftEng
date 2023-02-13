@@ -15,6 +15,15 @@ exports.getQuestionAnswers = async (req, res) => {
       where: { 
         QuestionnaireQuestionnaire_id: questionnaireID,
         Question_id: questionID
+      },
+      include: {
+        model: models.answer,
+        as : "answers",
+        on: {
+          'answers.QuestionQuestion_id': Sequelize.col('question.Question_id')
+        },
+        attributes: ["Answer_id"],
+        order: [["Answer_id", "ASC"]]
       }
     });
 

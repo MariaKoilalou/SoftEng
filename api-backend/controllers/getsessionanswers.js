@@ -17,14 +17,15 @@ exports.getSessionAnswers = async (req, res) => {
       },
       include: {
         model: models.answer,
+        as : "answers",
         on: {
-          'options.SessionSession_id': Sequelize.col('session.Session_id')
+          'answers.SessionSession_id': Sequelize.col('session.Session_id')
         },
         attributes: ["Answer_id"],
         order: [["Answer_id", "ASC"]]
       }
       },
-    });
+    );
 
     if (!session) {
       return res.status(404).json({ msg: 'Session not found' });
