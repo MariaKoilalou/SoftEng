@@ -30,7 +30,7 @@ function data_importer(path, model, encrypt) {
                         row.rating = null;
                     }
                     data.push(row);
-                    model.bulkCreate(data);
+                    model.bulkCreate(data).then();
                     return resolve(true);
                 }
             })

@@ -1,5 +1,6 @@
 const sequelize = require('../util/database');
 const initModels = require('../models/init-models');
+const Sequelize = require("sequelize");
 const models = initModels(sequelize);
 
 exports.getSessionAnswers = async (req, res) => {
@@ -16,7 +17,12 @@ exports.getSessionAnswers = async (req, res) => {
       },
       include: {
         model: models.answer,
-        required: false,
+        on: {
+          'options.SessionSession_id': Sequelize.col('session.Session_id')
+        },
+        attributes: ["Answer_id"],
+        order: [["Answer_id", "ASC"]]
+      }
       },
     });
 
