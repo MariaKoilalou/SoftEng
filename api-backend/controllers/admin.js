@@ -1,5 +1,5 @@
 // require libraries for validation, encrypting, jwt
-const { validationResult } = require("express-validator/check");
+const { validationResult } = require("express-validator");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 // end of libraries validation, encrypting, jwt

@@ -9,13 +9,13 @@ const permit = require('../middlewares/authorization');
 const router = express.Router();
 
 
-router.post('/usermod/:username/:password', isAuth, permit('sysadmin'), adminController.postUsermod);
+router.post('/usermod/:username/:password', isAuth, permit('sysadmin'), adminController.postUsermod); //this doesnt work
 
-router.post('/questionnaire_upd', isAuth , permit('sysadmin') , upload.single('file') ,adminController.postQuestionnaireUpd);
+router.post('/questionnaire_upd', isAuth , permit('sysadmin') , upload.single('file') ,adminController.postQuestionnaireUpd); //this doesnt work
 
-router.post('/login', adminController.login);
+router.post('/login', adminController.login); //this doesnt work
 
-router.post('/resetq/:questionnaireID' , isAuth , permit('sysadmin') , adminController.postQuestionnaire);
+router.post('/resetq/:questionnaireID' , isAuth , permit('sysadmin') , adminController.postQuestionnaire); //this doesnt work
 
 router.get('/users/:username' , isAuth , permit('sysadmin') , adminController.getUser);
 

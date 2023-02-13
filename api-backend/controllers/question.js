@@ -5,10 +5,13 @@ var models = initModels(sequelize);
 const Sequelize = require('sequelize');
 const op = Sequelize.Op;
 
+
 exports.getQuestion = async (req, res) => {
-  try {
+
+    try {
     const [questionnaireID, questionID] = req.params;
     const format = req.query.format;
+    let option = [];
 
     const question = await models.question.findOne({
         where: { 
@@ -34,8 +37,15 @@ exports.getQuestion = async (req, res) => {
       return res.status(400).json({ msg: "Data Undefined" });
     }
 
-    if (format === "csv") {
-      const csvString = question.toCsv();
+        question.toCsv = function () {
+            const header = 'Question_id,Text,type,Mandatory';
+            const values = `${question.Question_id},${question.Text},${question.type},${question.Mandatory}`;
+            return `${header}\n${values}`;
+        };
+
+
+        if (format === "csv") {
+       const csvString = question.toCsv();
       res.setHeader("Content-Type", "text/csv");
       res.setHeader(
         "Content-Disposition",
