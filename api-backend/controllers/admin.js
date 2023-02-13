@@ -77,42 +77,42 @@ exports.getHealthcheck = (req, res, next) => {
         })
 }
 
-exports.login = (req, res, next) => {
-
-    const username = req.body.username;
-    const password = req.body.password;
-
-    if (!username || !password) return res.status(400).json({message: 'Some parameters are undefined'});
-
-    let loadedAdmin;
-    models.system_admins.findOne({ where: {username: username} })
-        .then(systemAdmin => {
-            if (!systemAdmin) {
-                res.status(401).json({message:'Wrong credentials!'});
-            }
-            loadedAdmin = systemAdmin;
-            return bcrypt.compare(password, systemAdmin.password);
-        })
-        .then (isEqual => {
-            if (!isEqual) {
-                res.status(401).json({message:'Wrong credentials!'});
-            }
-            const token = jwt.sign(
-                { user: {
-                        system_admin_id: loadedAdmin.system_admin_id,
-                        role: loadedAdmin.role
-                    } },
-                'antegeiafile',
-                { expiresIn: '1h' }
-            );
-            res.status(200).json({
-                token: token
-            });
-        })
-        .catch(err => {
-            return res.status(500).json({message: 'Internal server error.'})
-        });
-}
+// exports.login = (req, res, next) => {
+//
+//     const username = req.body.username;
+//     const password = req.body.password;
+//
+//     if (!username || !password) return res.status(400).json({message: 'Some parameters are undefined'});
+//
+//     let loadedAdmin;
+//     models.system_admins.findOne({ where: {username: username} })
+//         .then(systemAdmin => {
+//             if (!systemAdmin) {
+//                 res.status(401).json({message:'Wrong credentials!'});
+//             }
+//             loadedAdmin = systemAdmin;
+//             return bcrypt.compare(password, systemAdmin.password);
+//         })
+//         .then (isEqual => {
+//             if (!isEqual) {
+//                 res.status(401).json({message:'Wrong credentials!'});
+//             }
+//             const token = jwt.sign(
+//                 { user: {
+//                         system_admin_id: loadedAdmin.system_admin_id,
+//                         role: loadedAdmin.role
+//                     } },
+//                 'antegeiafile',
+//                 { expiresIn: '1h' }
+//             );
+//             res.status(200).json({
+//                 token: token
+//             });
+//         })
+//         .catch(err => {
+//             return res.status(500).json({message: 'Internal server error.'})
+//         });
+// }
 
 exports.postUsermod = (req, res, next) => {
 

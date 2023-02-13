@@ -7,7 +7,8 @@ const op = Sequelize.Op;
 
 exports.getQuestion = async (req, res) => {
   try {
-    const [questionnaireID, questionID] = req.params;
+    const questionnaireID= req.params.questionnaireID;
+      const questionID= req.params.questionID;
     const format = req.query.format;
 
     const question = await models.question.findOne({
@@ -17,7 +18,7 @@ exports.getQuestion = async (req, res) => {
         },
         include: [
         {
-            model: option.question,
+            model: models.option,
             as: "options",
             where: {
                 QuestionnaireQuestionnaire_id: questionnaireID,

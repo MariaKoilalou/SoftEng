@@ -31,8 +31,8 @@ function initModels(sequelize) {
     session.hasMany(answer, { foreignKey: "SessionSession_id", onDelete: 'set null', onUpdate: 'cascade'});
     session.belongsTo(user, {foreignKey: "Userid"});
     user.hasMany(session, {foreignKey:"Userid", onDelete: 'cascade', onUpdate: 'cascade'});
-    option.hasOne(question, {foreignKey: "QuestionQuestion_id",onDelete: 'cascade', onUpdate: 'cascade'});
-    question.belongsTo(option,{foreignKey:"QuestionQuestion_id"});
+    question.hasMany(option, {foreignKey: "QuestionQuestion_id",onDelete: 'cascade', onUpdate: 'cascade'});
+    option.belongsTo(question,{foreignKey:"QuestionQuestion_id"});
     option.hasOne(question, {foreignKey: "NextQuestion_id",onDelete: 'set null', onUpdate: 'cascade'});
     question.belongsTo(option,{foreignKey:"NextQuestion_id"});
     option.belongsTo(questionnaire, {foreignKey: "QuestionnaireQuestionnaire_id"});

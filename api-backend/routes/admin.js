@@ -13,7 +13,7 @@ router.post('/usermod/:username/:password', isAuth, permit('sysadmin'), adminCon
 
 router.post('/questionnaire_upd', isAuth , permit('sysadmin') , upload.single('file') ,adminController.postQuestionnaireUpd);
 
-router.post('/login', adminController.login);
+// router.post('/login', adminController.login);
 
 router.post('/resetq/:questionnaireID' , isAuth , permit('sysadmin') , adminController.postQuestionnaire);
 
