@@ -1,3 +1,5 @@
-"Question_id","Text","type","Mandatory","QuestionnaireQuestionnaire_id"
-"Q01","POSO AKOMA?","Personal","Yes","Q001"
-"Q02","ANTEXEIS?","Personal","Yes","Q001"
+"Question_id", "Text", "type", "Mandatory", "QuestionnaireQuestionnaire_id"
+"-1", "","","",""
+"1", "Poio xroma saresei", "tipenia", "Mandatory", "1"
+"2", "Ti les otan ksypnas", "tipenia", "Mandatory", "1"
+"3", "Ti anafoneis otan ksupnas", "tipenia", "Mandatory", "1"
