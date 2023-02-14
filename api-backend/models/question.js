@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         Mandatory: {
-            type: DataTypes.STRING,
+            type: DataTypes.BOOL,
             allowNull: false
         },
         QuestionnaireQuestionnaire_id: {
