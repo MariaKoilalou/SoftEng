@@ -2,7 +2,7 @@ const sequelize = require('../util/database');
 const initModels = require("../models/init-models");
 const models = initModels(sequelize);
 
-exports.doAnswer = async (req, res) => {
+exports.postDoAnswer = async (req, res) => {
   try {
     const questionnaireID = req.params.questionnaireID;
     const questionID = req.params.questionID;
