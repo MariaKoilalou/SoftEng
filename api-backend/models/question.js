@@ -21,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         QuestionnaireQuestionnaire_id: {
             type: DataTypes.STRING,
+            primaryKey: true,
             allowNull: false,
             references: {
                 model: 'questionnaire',
@@ -39,6 +40,8 @@ module.exports = function(sequelize, DataTypes) {
                 using: "BTREE",
                 fields: [
                     {name: "Question_id"},
+                    {name: "QuestionnaireQuestionnaire_id"},
+
                 ]
             },
             {
