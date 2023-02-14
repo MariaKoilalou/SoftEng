@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
             },
         OptText: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         NextQuestion_id: {
             type: DataTypes.STRING,

@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         QuestionnaireQuestionnaire_id: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
             references: {
                 model: 'questionnaire',
                 key: 'Questionnaire_id'

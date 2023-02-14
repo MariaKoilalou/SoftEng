@@ -14,7 +14,7 @@ const server = http.createServer(app);
 initModels(sequelize);
 sequelize.sync({force:true})
     .then(result => {
-        populate_db();
+        //populate_db();
        if (!fs.existsSync('./uploads')) { fs.mkdirSync('./uploads'); }
        server.listen(port, () => console.log(`Server running on port ${port}!`))
     })

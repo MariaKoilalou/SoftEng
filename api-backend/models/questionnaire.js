@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         Author_id: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
             primaryKey: false,
             references: {
                 model: 'user',

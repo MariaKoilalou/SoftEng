@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         Text: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         QuestionQuestion_id: {
             type: DataTypes.STRING,
@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
         },
             SessionSession_id: {
                 type: DataTypes.STRING,
-                allowNull: true,
+                allowNull: false,
                 references: {
                     model: 'session',
                     key: 'Session_id'
