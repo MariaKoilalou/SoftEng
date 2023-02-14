@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         Mandatory: {
-            type: DataTypes.BOOL,
+            type: DataTypes.BOOLEAN,
             allowNull: false
         },
         QuestionnaireQuestionnaire_id: {
