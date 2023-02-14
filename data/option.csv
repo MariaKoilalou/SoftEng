@@ -1,0 +1,7 @@
+"Option_id", "QuestionnaireQuestionnaire_id", "QuestionQuestion_id", "OptText", "NextQuestion_id"
+"1", "1", "1", "MARESEI TO PRASINO", "2"
+"2", "1", "1", "MARESEI TO KOKKINO", "3"
+"3", "1", "2", "Doksa to theo", "-1"
+"4", "1", "2", "Kalimera", "-1"
+"5", "1", "3", "Kalispera", "-1"
+"6", "1", "3", "Kali Bradia", "-1"
