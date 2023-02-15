@@ -44,14 +44,14 @@ module.exports = function(sequelize, DataTypes) {
                         {name: "Userid"},
                     ]
                 },
-                {
-                    name: "Session_id_UNIQUE",
-                    unique: true,
-                    using: "BTREE",
-                    fields: [
-                        { name: "Session_id" },
-                    ]
-                },
+                // {
+                //     name: "Session_id_UNIQUE",
+                //     unique: true,
+                //     using: "BTREE",
+                //     fields: [
+                //         { name: "Session_id" },
+                //     ]
+                // },
                 {
                     name: "Userid_UNIQUE",
                     unique: true,
@@ -66,6 +66,7 @@ module.exports = function(sequelize, DataTypes) {
                     using: "BTREE",
                     fields: [
                         { name: "QuestionnaireQuestionnaire_id" },
+                        { name: "Session_id" }
                     ]
                 },
             ]
