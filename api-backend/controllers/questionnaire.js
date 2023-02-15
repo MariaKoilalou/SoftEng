@@ -1,9 +1,8 @@
 const express = require("express");
 const sequelize = require('../util/database');
-var initModels = require("../models/init-models");
-var models = initModels(sequelize);
-const Sequelize = require('sequelize');
-const op = Sequelize.Op;
+const initModels = require("../models/init-models");
+const models = initModels(sequelize);
+const json2csv = require('json2csv').parse;
 
 exports.getQuestionnaire = async (req, res) => {
   try {
@@ -31,13 +30,11 @@ exports.getQuestionnaire = async (req, res) => {
     }
 
     if (format === "csv") {
-      const csvString = questionnaire.toCsv();
-      res.setHeader("Content-Type", "text/csv");
-      res.setHeader(
-        "Content-Disposition",
-        `attachment; filename=questionnaire_${id}.csv`
-      );
-      return res.send(csvString);
+      const fields = ["Question_id", "Text", "Type", "Mandatory"];
+      const csv = json2csv(questionnaire.questions, { fields });
+      res.setHeader("Content-Type", "text/plain");
+
+      return res.send(csv);
     }
 
     return res.json(questionnaire);
