@@ -1,42 +1,42 @@
 Question_id,Text,type,Mandatory,QuestionnaireQuestionnaire_id
-1,What is your age group?,profile,true,1
-2,Do you have any dietery restrictions?,question,true,1
-3,What are your dietary restrictions,profile,false,1
-4,Do you excersise?,profile,true,1
-5,How often do you exercise?,profile,false,1
-6,How many servings of fruits and vegetables do you typically consume per day?,question,true,1
-7,What is your typical source of protein?,question,false,1
-8,Do you have any food allergies or intolerances that affect your diet?,question,true,1
-9,"How often do you consume sugary or high-fat foods and beverages (e.g., candy, soda, fried foods)?",question,true,1
-10,Are there many available options in restaurants for you?,question,false,1
-1,What is your age group?,profile,true,2
-2,What is your gender?,profile,false,2
-1,Do you pay attention to your personal style?,profile,true,2
-4,What are your favorite items or accessories to wear?,question,true,2
-5,How much do you spend on clothing per month?,question,true,2
-6,How often do you purchase new clothing or accessories?,question,false,2
-7,Do you prioritize style or comfort?,question,true,2
-8,Do you prefer monochrome outfits or daring prints and patterns?,question,false,2
-1,What is your age group?,profile,true,3
-2,Are you currently studying/worling?,profile,true,3
-3,Do you study/work from home?,profile,false,3
-4,Do you use public transport?,question,false,3
-5,What means of public transport do you mainly use?,question,false,3
-6,"How long is your daily commute, on average?",question,false,3
-7,Are there any aspects of your commute that you find particularly challenging or frustrating?,question,false,3
-8,What are those aspects?,question,false,3
-1,What is your age group?,profile,true,4
-2,What is your gender?,profile,true,4
-3,Do you prefer Playstation or PC for gaming?,profile,true,4
-4,What was your favorite game of this year?,question,false,4
-5,Do you prefer action or story driven games?,question,true,4
-6,Do you prefer multiplayer or singleplayer games?,question,true,4
-7,Have your ever thought of creating a game yourself?,question,false,4
-8,What is the game you have spent the mosts ours on?,question,false,4
-1,What is your age group?,profile,true,5
-2,What is your gender?,profile,true,5
-3,What is your favorite sport?,question,true,5
-4,Do you prefer team sports?,question,false,5
-5,What is your favorite athlete?,question,false,5
-6,Do you think athletes in the top level are overpaid?,	question,true,5
-7,Do you prefer short or long clothes in sports?,question,false,5
+0001,What is your age group?,profile,true,1
+0002,Do you have any dietery restrictions?,question,true,1
+0003,What are your dietary restrictions,profile,false,1
+0004,Do you excersise?,profile,true,1
+0005,How often do you exercise?,profile,false,1
+0006,How many servings of fruits and vegetables do you typically consume per day?,question,true,1
+0007,What is your typical source of protein?,question,false,1
+0008,Do you have any food allergies or intolerances that affect your diet?,question,true,1
+0009,"How often do you consume sugary or high-fat foods and beverages (e.g., candy, soda, fried foods)?",question,true,1
+0010,Are there many available options in restaurants for you?,question,false00031
+0001,What is your age group?,profile,tr000ue,2
+0002,What is your gender?,profile,fals000e,2
+0003,Do you pay attention to your pers000onal style?,profile,true,2
+0004,What are your favorite items or a000ccessories to wear?,question,true,2
+0005,How much do you spend on clothing000 per month?,question,true,2
+0006,How often do you purchase new clo000thing or accessories?,question,false,2
+0007,Do you prioritize style or comfor000t?,question,true,2
+0008,Do you prefer monochrome outfits 000or daring prints and patterns?,question,false,2
+0001,What is your age group?,profile,t000rue,3
+0002,Are you currently studying/worlin000g?,profile,true,3
+0003,Do you study/work from home?,prof000ile,false,3
+0004,Do you use public transport?,ques000tion,false,3
+0005,What means of public transport do000 you mainly use?,question,false,3
+0006,"How long is your daily commute, 000on average?",question,false,3
+0007,Are there any aspects of your com000mute that you find particularly challenging or frustrating?,question,false,3
+0008,What are those aspects?,question,000false,3
+0001,What is your age group?,profile,t000rue,4
+0002,What is your gender?,profile,tru000e,4
+0003,Do you prefer Playstation or PC 000for gaming?,profile,true,4
+0004,What was your favorite game of t000his year?,question,false,4
+0005,Do you prefer action or story dr000iven games?,question,true,4
+0006,Do you prefer multiplayer or sin000gleplayer games?,question,true,4
+0007,Have your ever thought of creati000ng a game yourself?,question,false,4
+0008,What is the game you have spent 000the mosts ours on?,question,false,4
+0001,What is your age group?,profile,000true,5
+0002,What is your gender?,profile,tru000e,5
+0003,What is your favorite sport?,que000stion,true,5
+0004,Do you prefer team sports?,quest000ion,false,5
+0005,What is your favorite athlete?,question,false,5
+0006,Do you think athletes in the top level are overpaid?,	question,true,5
+0007,Do you prefer short or long clothes in sports?,question,false,5
