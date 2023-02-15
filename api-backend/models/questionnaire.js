@@ -56,7 +56,7 @@ module.exports = function(sequelize, DataTypes) {
             },
             {
                 name: "Author_id_UNIQUE",
-                unique: true,
+                unique: false,
                 using: "BTREE",
                 fields: [
                     { name: "Author_id" },
