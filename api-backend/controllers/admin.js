@@ -44,6 +44,36 @@ exports.postReset = (req, res, next) => {
 
 }
 
+// exports.postQuestionnaire = (req, res) => {
+//     const questionnaireID = req.params.questionnaireID;
+  
+//     models.question.findAll({ where: { Questionnaire_id: questionnaireID } })
+//       .then(questions => {
+//         const promises = questions.map(question => {
+//           return models.answer.destroy({ where: { Question_id: question.Question_id } })
+//         })
+  
+//         Promise.all(promises)
+//           .then(() => {
+//             return res.status(200).send({
+//               message: "All answers for the specified questionnaire have been reset successfully."
+//             })
+//           })
+//           .catch(error => {
+//             return res.status(500).send({
+//               message: "Failed to reset answers for the specified questionnaire.",
+//               error: error.message
+//             })
+//           })
+//       })
+//       .catch(error => {
+//         return res.status(500).send({
+//           message: "Failed to retrieve questions for the specified questionnaire.",
+//           error: error.message
+//         })
+//       })
+//   };
+
 exports.getUser = (req, res, next) => {
 
     const email = req.params.username;
