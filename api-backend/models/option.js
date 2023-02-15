@@ -32,10 +32,10 @@ module.exports = function(sequelize, DataTypes) {
         NextQuestion_id: {
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: '0000',
+            defaultValue: null,
             references: {
                 model: 'question',
-                key: 'Question_id',
+                key: 'Question_id'
             }
         }
     },
@@ -86,7 +86,7 @@ module.exports = function(sequelize, DataTypes) {
                     using: "BTREE",
                     fields: [
                         { name: "NextQuestion_id" },
-                        { name: "Option_id" },
+
                     ]
                 },
                 
