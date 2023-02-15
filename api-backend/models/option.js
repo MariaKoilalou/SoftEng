@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
             references: {
                 model: 'question',
-                key: 'Question_id'
+                key: 'Question_id',
             }
         }
     },
@@ -49,44 +49,45 @@ module.exports = function(sequelize, DataTypes) {
                     using: "BTREE",
                     fields: [
                         { name: "Option_id" },
+                        { name: "QuestionnaireQuestionnaire_id" }
                     ]
                 },
                 
-                {
-                    name: "QuestionnaireQuestionnaire_UNIQUE",
-                    unique: true,
-                    using: "BTREE",
-                    fields: [
-                        { name: "QuestionnaireQuestionnaire_id" },
-                    ]
-                },
+                // {
+                //     name: "QuestionnaireQuestionnaire_UNIQUE",
+                //     unique: true,
+                //     using: "BTREE",
+                //     fields: [
+                //         { name: "QuestionnaireQuestionnaire_id" },
+                //     ]
+                // },
 
-                {
-                    name: "QuestionQuestion_UNIQUE",
-                    unique: true,
-                    using: "BTREE",
-                    fields: [
-                        { name: "QuestionQuestion_id" },
-                    ]
-                },       
+                // {
+                //     name: "QuestionQuestion_UNIQUE",
+                //     unique: true,
+                //     using: "BTREE",
+                //     fields: [
+                //         { name: "QuestionQuestion_id" },
+                //     ]
+                // },       
 
-                {
-                    name: "Option_id_UNIQUE",
-                    unique: true,
-                    using: "BTREE",
-                    fields: [
-                        { name: "Option_id" },
-                    ]
-                },
-                {
-                    name: "NextQuestion_id_UNIQUE",
-                    unique: true,
-                    using: "BTREE",
-                    fields: [
-                        { name: "NextQuestion_id" },
-                        { name: "Option_id" },
-                    ]
-                },
+                // {
+                //     name: "Option_id_UNIQUE",
+                //     unique: true,
+                //     using: "BTREE",
+                //     fields: [
+                //         { name: "Option_id" },
+                //     ]
+                // },
+                // {
+                //     name: "NextQuestion_id_UNIQUE",
+                //     unique: true,
+                //     using: "BTREE",
+                //     fields: [
+                //         { name: "NextQuestion_id" },
+                //         { name: "Option_id" },
+                //     ]
+                // },
                 
             ]
     });
