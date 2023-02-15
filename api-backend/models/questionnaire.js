@@ -14,7 +14,8 @@ module.exports = function(sequelize, DataTypes) {
                 return this.getDataValue('Keywords') ? this.getDataValue('Keywords').split(',') : [];
             },
             set(value) {
-                this.setDataValue('Keywords', value.join(','));
+                //this.setDataValue('Keywords', value.join(','));
+                this.setDataValue('Keywords');
             }
         },
         Author_id: {
