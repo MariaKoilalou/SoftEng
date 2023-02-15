@@ -1,6 +1,6 @@
-const sequelize = require('../util/database');
-const initModels = require("../models/init-models");
-const models = initModels(sequelize);
+// const sequelize = require('../util/database');
+// const initModels = require("../models/init-models");
+// const models = initModels(sequelize);
 
 // exports.getQuestionAnswers = async (req, res) => {
 //   try {
