@@ -4,7 +4,7 @@ Answer_id,Text,QuestionQuestion_id,QuestionnaireQuestionnaire_id,SessionSession_
 0003,Vegetarian,0003,0001,0001
 0004,No,0004,0001,0001
 0005,2 or 3,0006,0001,0001
-0006,beans and vegetables,0007,001,0001
+0006,beans and vegetables,0007,0001,0001
 0007,No,0008,0001,0001
 0008,Monthly,0009,0001,0001
 0009,18-30,0001,0001,0004
