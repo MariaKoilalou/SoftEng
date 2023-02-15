@@ -9,8 +9,10 @@ const admin = require('./routes/admin');
 const doanswer = require('./routes/doanswer');
 const getsessionanswers = require('./routes/getsessionanswers');
 const getquestionanswers = require('./routes/getquestionanswers');
+
 const questionnaire = require('./routes/questionnaire');
 /* end of ROUTES and how to import routes */
+const getallquestionnaires = require('./routes/getallquestionnaires')
 
 const app = express();
 
@@ -33,7 +35,7 @@ app.use('/intelliq_api/questionnaire', questionnaire);
 app.use('/intelliq_api/doanswer', doanswer);
 app.use('/intelliq_api/getsessionanswers', getsessionanswers);
 app.use('/intelliq_api/getquestionanswers', getquestionanswers);
-
+app.use('/intelliq_api/getallquestionnaires', getallquestionnaires);
 
 // /*End of routes used by our project */
 
