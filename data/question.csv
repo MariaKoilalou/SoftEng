@@ -1,43 +1,43 @@
 "Question_id","Text","type","Mandatory","QuestionnaireQuestionnaire_id"
-0000,Submit,question,false,0000
-0001,What is your age group?,profile,true,0001
-0002,Do you have any dietery restrictions?,question,true,0001
-0003,What are your dietary restrictions,profile,false,0001
-0004,Do you excersise?,profile,true,0001
-0005,How often do you exercise?,profile,false,0001
-0006,How many servings of fruits and vegetables do you typically consume per day?,question,true,0001
-0007,What is your typical source of protein?,question,false,0001
-0008,Do you have any food allergies or intolerances that affect your diet?,question,true,0001
-0009,"How often do you consume sugary or high-fat foods and beverages (e.g., candy, soda, fried foods)?",question,true,0001
-0010,Are there many available options in restaurants for you?,question,false,0001
-0011,What is your age group?,profile,true,0002
-0012,What is your gender?,profile,false,0002
-0013,Do you pay attention to your personal style?,profile,true,0002
-0014,What are your favorite items or accessories to wear?,question,true,0002
-0015,How much do you spend on clothing per month?,question,true,0002
-0016,How often do you purchase new clothing or accessories?,question,false,0002
-0017,Do you prioritize style or comfort?,question,true,0002
-0018,Do you prefer monochrome outfits or daring prints and patterns?,question,false,0002
-0019,What is your age group?,profile,true,0003
-0020,Are you currently studying/working?,profile,true,0003
-0021,Do you study/work from home?,profile,false,0003
-0022,Do you use public transport?,question,false,0003
-0023,What means of public transport do you mainly use?,question,false,0003
-0024,"How long is your daily commute, on average?",question,false,0003
-0025,Are there any aspects of your commute that you find particularly challenging or frustrating?,question,false,0003
-0026,What are those aspects?,question,false,0003
-0027,What is your age group?,profile,true,0004
-0028,What is your gender?,profile,true,0004
-0029,Do you prefer multiplayer or singleplayer games?,question,true,0004
-0030,What was your favorite game of this year?,question,true,0004
-0031,Do you prefer action or story driven games?,question,true,0004
-0032,Do you prefer Playstation or PC for gaming?,question,true,0004
-0033,Do you own a PlayStation 5?,question,false,0004
-0034,Do you own a PC which costs more than 1000$?,question,false,0004
-0035,What is your age group?,profile,true,0005
-0036,What is your gender?,profile,true,0005
-0037,What is your favorite sport?,question,true,0005
-0038,Do you prefer team sports or individual sports?,question,true,0005
-0039,What position do you play in?,question,false,0005
-0040,Do you find there is more passion when you compete alone?,question,false,0005
-0041,Do you find team sports to be more competitive than individual sports?,question,true,0005
+"0000","Submit","question","false","0000"
+"0001","What is your age group?","profile","true","0001"
+"0002","Do you have any dietery restrictions?","question","true","0001"
+"0003","What are your dietary restrictions","profile","false","0001"
+"0004","Do you excersise?","profile","true","0001"
+"0005","How often do you exercise?","profile","false","0001"
+"0006","How many servings of fruits and vegetables do you typically consume per day?","question","true","0001"
+"0007","What is your typical source of protein?","question","false","0001"
+"0008","Do you have any food allergies or intolerances that affect your diet?","question","true","0001"
+"0009","How often do you consume sugary or high-fat foods and beverages (e.g., candy, soda, fried foods)?","question","true","0001"
+"0010","Are there many available options in restaurants for you?","question","false","0001"
+"0011","What is your age group?","profile","true","0002"
+"0012","What is your gender?","profile","false","0002"
+"0013","Do you pay attention to your personal style?","profile","true","0002"
+"0014","What are your favorite items or accessories to wear?","question","true","0002"
+"0015","How much do you spend on clothing per month?","question","true","0002"
+"0016","How often do you purchase new clothing or accessories?","question","false","0002"
+"0017","Do you prioritize style or comfort?","question","true","0002"
+"0018","Do you prefer monochrome outfits or daring prints and patterns?","question","false","0002"
+"0019","What is your age group?","profile","true","0003"
+"0020","Are you currently studying/working?","profile","true","0003"
+"0021","Do you study/work from home?","profile","false","0003"
+"0022","Do you use public transport?","question","false","0003"
+"0023","What means of public transport do you mainly use?","question","false","0003"
+"0024","How long is your daily commute, on average?","question","false","0003"
+"0025","Are there any aspects of your commute that you find particularly challenging or frustrating?","question","false","0003"
+"0026","What are those aspects?","question","false","0003"
+"0027","What is your age group?","profile","true","0004"
+"0028","What is your gender?","profile","true","0004"
+"0029","Do you prefer multiplayer or singleplayer games?","question","true","0004"
+"0030","What was your favorite game of this year?","question","true","0004"
+"0031","Do you prefer action or story driven games?","question","true","0004"
+"0032","Do you prefer Playstation or PC for gaming?","question","true","0004"
+"0033","Do you own a PlayStation 5?","question","false","0004"
+"0034","Do you own a PC which costs more than 1000$?","question","false","0004"
+"0035","What is your age group?","profile","true","0005"
+"0036","What is your gender?","profile","true","0005"
+"0037","What is your favorite sport?","question","true","0005"
+"0038","Do you prefer team sports or individual sports?","question","true","0005"
+"0039","What position do you play in?","question","false","0005"
+"0040","Do you find there is more passion when you compete alone?","question","false","0005"
+"0041","Do you find team sports to be more competitive than individual sports?","question","true","0005"
