@@ -1,6 +1,10 @@
+const json2csv = require('json2csv').parse;
+const express = require("express");
 const sequelize = require('../util/database');
-const initModels = require("../models/init-models");
-const models = initModels(sequelize);
+var initModels = require("../models/init-models");
+var models = initModels(sequelize);
+const Sequelize = require('sequelize');
+const op = Sequelize.Op;
 
 exports.postDoAnswer = async (req, res) => {
   try {

@@ -1,13 +1,7 @@
-const express = require('express');
-
-const answerController = require('../controllers/getquestionanswers');
-
-const upload = require("../middlewares/upload");
-const isAuth = require('../middlewares/authentication')
-const permit = require('../middlewares/authorization')
-
+const express = require("express");
+const answerController = require("../controllers/getquestionanswers");
 const router = express.Router();
 
-router.get('/:questionnaireID/:questionID', answerController.getQuestionAnswers);
+router.get("/:questionnaireID/:questionID", answerController.getQuestionAnswers);
 
 module.exports = router;

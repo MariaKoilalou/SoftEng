@@ -4,11 +4,12 @@ const bodyParser = require('body-parser');
 /* ROUTES and how to import routes */
 const question = require('./routes/question');
 const login = require('./routes/login');
-const logout = require('./routes/logout')
+const logout = require('./routes/logout');
 const admin = require('./routes/admin');
 const doanswer = require('./routes/doanswer');
 const getsessionanswers = require('./routes/getsessionanswers');
 const getquestionanswers = require('./routes/getquestionanswers');
+
 const questionnaire = require('./routes/questionnaire');
 /* end of ROUTES and how to import routes */
 
@@ -31,8 +32,10 @@ app.use('/intelliq_api/logout',logout);
 app.use('/intelliq_api/question', question);
 app.use('/intelliq_api/questionnaire', questionnaire);
 app.use('/intelliq_api/doanswer', doanswer);
-app.use('/intelliq_api/qetsessionanswers', getsessionanswers);
-app.use('/intelliq_api/qetquestionanswers', getquestionanswers);
+app.use('/intelliq_api/getsessionanswers', getsessionanswers);
+app.use('/intelliq_api/getquestionanswers', getquestionanswers);
+
+
 // /*End of routes used by our project */
 
 // In case of an endpoint does not exist
