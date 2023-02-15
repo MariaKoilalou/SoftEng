@@ -61,7 +61,7 @@ Option_id,QuestionnaireQuestionnaire_id,QuestionQuestion_id,OptText,NextQuestion
 60,3,1,>60,2
 61,3,2,Yes,3
 62,3,2,No,4
-63,3,3,Yes,
+63,3,3,Yes, 
 64,3,3,No,4
 65,3,4,Yes,5
 66,3,4,No,6
