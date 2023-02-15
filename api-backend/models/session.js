@@ -25,10 +25,6 @@ module.exports = function(sequelize, DataTypes) {
                 key: 'Questionnaire_id'
             }
         },
-        date: {
-            type: DataTypes.DATEONLY,
-            allowNull: false
-        }
     },
         {
             sequelize,
