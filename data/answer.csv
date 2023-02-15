@@ -10,7 +10,7 @@ Answer_id,Text,QuestionQuestion_id,QuestionnaireQuestionnaire_id,SessionSession_
 0009,18-30,0001,0001,0004
 0010,Yes,0002,0001,0004
 0011,Vegan,0003,0001,0004
-0012,No,4,0001,0004
+0012,No,0004,0001,0004
 0013,2 or 3,0006,0001,0004
 0014,beans and vegetables,0007,0001,0004
 0015,No,0008,0001,0004
