@@ -44,7 +44,7 @@ const Questionnaire = require('../models/questionnaire');
 const Session = require('../models/session');
 const Answer = require('../models/answer');
 
-exports.getSession = async (req, res, next) => {
+exports.getSessionAnswers = async (req, res, next) => {
   const questionnaireID = req.params.questionnaireID;
   const sessionID = req.params.session;
 
@@ -52,13 +52,13 @@ exports.getSession = async (req, res, next) => {
     // find the questionnaire
     const questionnaire = await Questionnaire.findById(questionnaireID);
     if (!questionnaire) {
-      return res.status(404).json({ message: 'Questionnaire not found' });
+      return res.status(400).json({ message: 'Questionnaire not found' });
     }
 
     // find the session
     const session = await Session.findOne({ _id: sessionID, questionnaire: questionnaireID });
     if (!session) {
-      return res.status(404).json({ message: 'Session not found' });
+      return res.status(400).json({ message: 'Session not found' });
     }
 
     // find all answers for the session
