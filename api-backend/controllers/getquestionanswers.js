@@ -22,32 +22,43 @@ exports.getQuestionAnswers = async (req, res) => {
       },
       include: [
         {
-          model: models.answer,
-          as: "answers",
-          where: { QuestionQuestion_id: questionID },
-          attributes: ["Answer_id", "Text", "SessionSession_id"],
-          order: [["Answer_id", "ASC"]]
-        },
-        {
-          model: models.session,
-          as: "sessions",
-          attributes: ["Session_id"]
+          model: models.questionnaire,
+          where: {
+            Questionnaire_id: questionnaireID
+          },
+          attributes:["Questionnaire_id"],
+          required:false,
+          include: [
+            {
+              model: models.session,
+              where: {
+                QuestionnaireQuestionnaire_id: questionnaireID
+              },
+              attributes:["Session_id"],
+              required: false,
+              include: [
+                {
+                  model: models.answer,
+                  as: "answers",
+                  on: {
+                    'model.SessionSession_id': Sequelize.col('Session_id')
+
+                  },
+                  attributes: ["SessionSession_id", "Answer_id"],
+                  order: [["SessionSession_id", "ASC"]]
+                }
+              ],
+            }
+          ],
         }
-      ]
+        ],
+      attributes: ["QuestionnaireQuestionnaire_id","Question_id"]
     });
 
     if (!question) {
       return res.status(400).json({ msg: "Question not found" });
     }
-
-    const answers = question.answers.map(answer => ({
-      Answer_id: answer.Answer_id,
-      Text: answer.Text,
-      SessionSession_id: answer.SessionSession_id,
-      Session_id: models.session.Session_id
-    }));
-
-    return res.json(answers);
+    return res.json(question);
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ msg: "Server error" });
