@@ -8,7 +8,7 @@ if (process.env.NODE_ENV.trim() === 'test') {
     sequelize = new Sequelize('intelliq_api-test', 'root', 'nikolakis22', {
         dialect: 'mysql',
         host: 'localhost',
-        port: '3306',
+        port: '8080',
         logging: false
     });
 }
@@ -16,7 +16,7 @@ else {
     sequelize = new Sequelize('intelliq_api', 'root', 'nikolakis22', {
         dialect: 'mysql',
         host: 'localhost',
-        port: '3306',
+        port: '8080',
         logging: false
     });
 }
