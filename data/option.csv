@@ -91,8 +91,8 @@ Option_id,QuestionnaireQuestionnaire_id,QuestionQuestion_id,OptText,NextQuestion
 0090,0004,0030,Stray,0031
 0001,0004,0030,Elden Ring,0031
 0092,0004,0030,Other,0031
-0093,0004,0031,singleplayer,0032
-0094,0004,0031,multiplayer,0032
+0093,0004,0031,action,0032
+0094,0004,0031,story driven,0032
 0095,0004,0032,Playstation,0033
 0096,0004,0032,PC,0034
 0097,0004,0033,Yes,
