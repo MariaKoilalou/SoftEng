@@ -27,16 +27,16 @@ Question_id,Text,type,Mandatory,QuestionnaireQuestionnaire_id
 0026,What are those aspects?,question,false,0003
 0027,What is your age group?,profile,true,0004
 0028,What is your gender?,profile,true,0004
-0029,Do you prefer Playstation or PC for gaming?,profile,true,0004
+0029,Do you prefer Playstation or PC for gaming?,question,true,0004
 0030,What was your favorite game of this year?,question,false,0004
 0031,Do you prefer action or story driven games?,question,true,0004
 0032,Do you prefer multiplayer or singleplayer games?,question,true,0004
-0033,Have your ever thought of creating a game yourself?,question,false,0004
-0034,What is the game you have spent the mosts ours on?,question,false,0004
+0033,Do you own a PlayStation 5?,question,false,0004
+0034,Do you own a PC which costs more than 1000$?,question,false,0004
 0035,What is your age group?,profile,true,0005
 0036,What is your gender?,profile,true,0005
 0037,What is your favorite sport?,question,true,0005
-0038,Do you prefer team sports?,question,false,0005
-0039,What is your favorite athlete?,question,false,0005
-0040,Do you think athletes in the top level are overpaid?,	question,true,0005
-0041,Do you prefer short or long clothes in sports?,question,false,0005
+0038,Do you prefer team sports?,question,true,0005
+0039,What position do you play in?,question,false,0005
+0040,Do you think athletes in the top level are overpaid?,question,false,0005
+0041,Do you find team sports to be more competitive than individual sports?,question,false,0005
