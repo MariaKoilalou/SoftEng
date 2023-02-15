@@ -9,14 +9,14 @@ Question_id,Text,type,Mandatory,QuestionnaireQuestionnaire_id
 8,Do you have any food allergies or intolerances that affect your diet?,question,true,1
 9,"How often do you consume sugary or high-fat foods and beverages (e.g., candy, soda, fried foods)?",question,true,1
 10,Are there many available options in restaurants for you?,question,false,1
-11,What is your age group?,profile,true,2
-12,What is your gender?,profile,false,2
-13,Do you pay attention to your personal style?,profile,true,2
-14,What are your favorite items or accessories to wear?,question,true,2
-15,How much do you spend on clothing per month?,question,true,2
-16,How often do you purchase new clothing or accessories?,question,false,2
-17,Do you prioritize style or comfort?,question,true,2
-18,Do you prefer monochrome outfits or daring prints and patterns?,question,false,2
+1,What is your age group?,profile,true,2
+2,What is your gender?,profile,false,2
+1,Do you pay attention to your personal style?,profile,true,2
+4,What are your favorite items or accessories to wear?,question,true,2
+5,How much do you spend on clothing per month?,question,true,2
+6,How often do you purchase new clothing or accessories?,question,false,2
+7,Do you prioritize style or comfort?,question,true,2
+8,Do you prefer monochrome outfits or daring prints and patterns?,question,false,2
 1,What is your age group?,profile,true,3
 2,Are you currently studying/worling?,profile,true,3
 3,Do you study/work from home?,profile,false,3
