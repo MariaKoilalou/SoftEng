@@ -38,5 +38,5 @@ Question_id,Text,type,Mandatory,QuestionnaireQuestionnaire_id
 0037,What is your favorite sport?,question,true,0005
 0038,Do you prefer team sports?,question,true,0005
 0039,What position do you play in?,question,false,0005
-0040,Do you think athletes in the top level are overpaid?,question,false,0005
-0041,Do you find team sports to be more competitive than individual sports?,question,false,0005
+0040,Do you find there is more passion when you compete alone?,question,false,0005
+0041,Do you find team sports to be more competitive than individual sports?,question,true,0005
