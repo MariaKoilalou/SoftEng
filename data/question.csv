@@ -22,7 +22,7 @@ Question_id,Text,type,Mandatory,QuestionnaireQuestionnaire_id
 0003,Do you study/work from home?,profile,false,0003
 0004,Do you use public transport?,question,false,0003
 0005,What means of public transport do you mainly use?,question,false,0003
-0006,"How long is your daily commute, on average?",question,false,3
+0006,"How long is your daily commute, on average?",question,false,0003
 0007,Are there any aspects of your commute that you find particularly challenging or frustrating?,question,false,0003
 0008,What are those aspects?,question,false,0003
 0001,What is your age group?,profile,true,0004
