@@ -2,11 +2,12 @@ const fs = require('fs');
 const csv = require('fast-csv');
 const bcrypt = require('bcryptjs');
 
+
 function data_importer(path, model, encrypt) {
 
     return new Promise(resolve => {
         fs.createReadStream(path)
-            .pipe(csv.parse({ headers : true }))
+            .pipe(csv.parse({ delimiter: ",", from_line: 2 }))
             .on("error", (error) => {
                 throw error.message;
             })
@@ -17,7 +18,7 @@ function data_importer(path, model, encrypt) {
                         .then(hashedPw => {
                             row.password = hashedPw;
                             data.push(row);
-                            model.bulkCreate(data);
+                            model.bulkCreate(data).then( );
                             return resolve(true);
                         })
                         .catch(err => {
@@ -26,9 +27,6 @@ function data_importer(path, model, encrypt) {
                 }
                 else {
                     let data = [];
-                    if (row.rating === 'NULL') {
-                        row.rating = null;
-                    }
                     data.push(row);
                     model.bulkCreate(data).then();
                     return resolve(true);
