@@ -7,7 +7,7 @@ function data_importer(path, model, encrypt) {
 
     return new Promise(resolve => {
         fs.createReadStream(path)
-            .pipe(csv.parse({ delimiter: ",", from_line: 2 }))
+            .pipe(csv.parse({ headers : true }))
             .on("error", (error) => {
                 throw error.message;
             })
