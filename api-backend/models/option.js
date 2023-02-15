@@ -51,14 +51,7 @@ module.exports = function(sequelize, DataTypes) {
                         { name: "Option_id" },
                     ]
                 },
-                {
-                    name: "QuestionQuestion_id_UNIQUE",
-                    unique: true,
-                    using: "BTREE",
-                    fields: [
-                        { name: "QuestionQuestion_id" },
-                    ]
-                },
+                
                 {
                     name: "QuestionnaireQuestionnaire_UNIQUE",
                     unique: true,
@@ -67,6 +60,16 @@ module.exports = function(sequelize, DataTypes) {
                         { name: "QuestionnaireQuestionnaire_id" },
                     ]
                 },
+
+                {
+                    name: "QuestionQuestion_UNIQUE",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [
+                        { name: "QuestionQuestion_id" },
+                    ]
+                },       
+
                 {
                     name: "Option_id_UNIQUE",
                     unique: true,
@@ -81,8 +84,10 @@ module.exports = function(sequelize, DataTypes) {
                     using: "BTREE",
                     fields: [
                         { name: "NextQuestion_id" },
+                        { name: "Option_id" },
                     ]
                 },
+                
             ]
     });
     };
