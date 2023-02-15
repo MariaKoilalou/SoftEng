@@ -21,13 +21,13 @@ exports.postDoAnswer = async (req, res) => {
     });
 
     if (!question) {
-      return res.status(404).json({ msg: "Question not found" });
+      return res.status(400).json({ msg: "Question not found" });
     }
 
     const session = await models.session.findByPk(sessionID);
 
     if (!session) {
-      return res.status(404).json({ msg: "Session not found" });
+      return res.status(400).json({ msg: "Session not found" });
     }
 
     const answer = await models.answer.create({
@@ -35,8 +35,8 @@ exports.postDoAnswer = async (req, res) => {
       QuestionQuestion_id: questionID,
       SessionSession_id: sessionID
     });
-
-    return res.json({ msg: "Answer recorded successfully" });
+    return res.sendStatus(200);
+    // return res.json({ msg: "Answer recorded successfully" });
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ msg: "Server error" });
