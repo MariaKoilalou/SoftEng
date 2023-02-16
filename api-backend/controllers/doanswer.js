@@ -1,8 +1,22 @@
+
 const express = require("express");
 const sequelize = require("../util/database");
 const initModels = require("../models/init-models");
 const models = initModels(sequelize);
 const { Op } = require("sequelize");
+
+function generateRandomString() {
+  const letters = 'abcdefghijklmnopqrstuvwxyz';
+  const numbers = '0123456789';
+  let result = '';
+
+  for (let i = 0; i < 4; i++) {
+    const randomChar = Math.floor(Math.random() * 2) == 0 ? letters : numbers;
+    result += randomChar.charAt(Math.floor(Math.random() * randomChar.length));
+  }
+
+  return result;
+}
 
 exports.postDoAnswer = async (req, res) => {
   try {
@@ -33,7 +47,7 @@ exports.postDoAnswer = async (req, res) => {
     }
 
     const newAnswer = await models.answer.create({
-      Answer_id: "1312",
+      Answer_id: generateRandomString(),
       //kathe fora pou to kaloume thelei allo id
       Text : optionID,
       QuestionQuestion_id: questionID,
