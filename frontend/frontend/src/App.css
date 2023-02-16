@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.table-row{
+  cursor:pointer;
+  }
+
+
+  #navbardrop{
+    margin-right: 70px;
+    color: white;
+    font-family: inherit;
+  }
+  #navbardrop-sec{
+    margin-right: 60px;
+    color: white;
+    font-family: inherit;
+  }
+  #navbardrop-DEVS{
+    right: 1200px;
+    color: white;
+    font-family: inherit;
+  }
+  #username{
+    margin-right: 20px;
+  }
+  
+  #footer{
+    margin-top: 750px;
+    width: 100%;
+    clear : both;
+    color: #A4A4A4;
+    text-align: center;
+    background-color: #2E2E2E;
+  }
+  
+  #datacar{
+    font-family: serif;
+    width: 800px;
+    height: auto;        /*για εξωτερικό περιεχόμενο*/
+    color: black;
+    text-align: center;   /*για εσωτερικό περιεχόμενο*/
+    opacity: 0.9;
+    padding: 30px;    /*για εσωτερικό περιεχόμενο*/
+    margin: auto;    /*για εξωτερικο κουτι , αποστασεις απο ολοκληρη την σελλιδα*/
+  }
+  
+  #datapayment{
+    font-family: serif;
+    width: 400px;
+    height: 150px;        /*για εξωτερικό περιεχόμενο*/
+    color: black;
+    text-align: center;   /*για εσωτερικό περιεχόμενο*/
+    opacity: 0.8;
+    padding: 30px;    /*για εσωτερικό περιεχόμενο*/
+    margin: auto;    /*για εξωτερικο κουτι , αποστασεις απο ολοκληρη την σελλιδα*/
+  }
+  
+  #databonus{
+    font-family: serif;
+    width: 400px;
+    height: 100px;        /*για εξωτερικό περιεχόμενο*/
+    color: black;
+    text-align: center;   /*για εσωτερικό περιεχόμενο*/
+    opacity: 0.8;
+    padding: 30px;    /*για εσωτερικό περιεχόμενο*/
+    margin: auto;    /*για εξωτερικο κουτι , αποστασεις απο ολοκληρη την σελλιδα*/
+  }
+  
+  body{
+    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d2a01df0-0dd9-47e7-9248-cfb31c99e3d8/dc9882b-c5ee310d-a6b5-4a0f-a855-49ba3b4da1e1.png/v1/fill/w_1024,h_592,q_80,strp/question_mark_background__by_catdragon4_dc9882b-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTkyIiwicGF0aCI6IlwvZlwvZDJhMDFkZjAtMGRkOS00N2U3LTkyNDgtY2ZiMzFjOTllM2Q4XC9kYzk4ODJiLWM1ZWUzMTBkLWE2YjUtNGEwZi1hODU1LTQ5YmEzYjRkYTFlMS5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.ayrD4cH35SUESzDOa4WzWM5AcRaBk_JYRDL3uTCxB3c');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  table{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    background-color: rgba(255,255,255, 1);
+  }
+  #table-responsive{
+    overflow-y:scroll;
+    height: 500px;
+  }
+  
+  td{
+    border: 1px solid black;
+  }
