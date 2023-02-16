@@ -13,7 +13,7 @@ exports.getQuestionAnswers = async (req, res) => {
     }
 
     const answers = await models.answer.findAll({
-      attributes: ["SessionSession_id","Answer_id"],
+      attributes: ["SessionSession_id", "Answer_id"],
       where: {
         [Op.and]: [
           { QuestionQuestion_id: questionID },
@@ -22,7 +22,11 @@ exports.getQuestionAnswers = async (req, res) => {
       },
     });
 
-    return res.json(answers);
+    return res.json({
+      questionnaireID: questionnaireID,
+      questionID: questionID,
+      answers: answers,
+    });
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ msg: "Server error" });
