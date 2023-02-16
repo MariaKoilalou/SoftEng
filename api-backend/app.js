@@ -9,10 +9,9 @@ const admin = require('./routes/admin');
 const doanswer = require('./routes/doanswer');
 const getsessionanswers = require('./routes/getsessionanswers');
 const getquestionanswers = require('./routes/getquestionanswers');
-
 const questionnaire = require('./routes/questionnaire');
-/* end of ROUTES and how to import routes */
 const getallquestionnaires = require('./routes/getallquestionnaires')
+/* end of ROUTES and how to import routes */
 
 const app = express();
 
