@@ -11,15 +11,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: true
         },
-        Author_id: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            primaryKey: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
+
         Title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -45,14 +37,6 @@ module.exports = function(sequelize, DataTypes) {
                 using: "BTREE",
                 fields: [
                     { name: "Questionnaire_id" },
-                ]
-            },
-            {
-                name: "Author_id_UNIQUE",
-                unique: false,
-                using: "BTREE",
-                fields: [
-                    { name: "Author_id" },
                 ]
             },
         ]

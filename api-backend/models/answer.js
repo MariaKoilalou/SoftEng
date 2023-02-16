@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     return sequelize.define("answer", {
         Answer_id: {
             type: DataTypes.STRING,
+            //autoIncrement: false,
             allowNull: false,
             primaryKey: true
         },

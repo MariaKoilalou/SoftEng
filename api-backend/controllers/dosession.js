@@ -26,15 +26,12 @@ exports.postDoSession = async (req, res) => {
       return res.status(400).json({ msg: "Data Undefined" });
     }
 
-    console.log("Edw");
     var tempSession = generateRandomString();
-    console.log("Edw");
     const newSession = await models.session.create({
       Session_id: tempSession,
-      Userid: "0069",
-      QuestionnaireQuestionnaire_id : questionnaireID,
+      //Userid: "0069",
+      QuestionnaireQuestionnaire_id : questionnaireID
     });
-    console.log("Edw");
     return res.json(tempSession);
     // return res.sendStatus(200);
     // return res.json({ msg: "Answer recorded successfully" });

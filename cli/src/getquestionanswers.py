@@ -10,7 +10,6 @@ def getquestionanswers(ar):
     url = 'http://localhost:9103/intelliq_api/getquestionanswers/' + ar.questionnaire_id + '/' + ar.question_id
     if (ar.format == 'csv'):
         url = url + '?format=csv'
-    #headers = {'x-observatory-auth' : ar.apikey}
     res = requests.get(url, verify=False)
     print(res.status_code)
     if (ar.format == 'json' and res.status_code == 200):
@@ -24,12 +23,11 @@ def getquestionanswers(ar):
         x.set_style(DEFAULT)
         print(x)
         f.close()
-    while(1):{}
+    #while(1):{}
     return True
 
 
 parser = argparse.ArgumentParser()
-#parser.add_argument('--apikey', help='Give API key', required='TRUE')
 parser.add_argument('--format', choices=['csv','json'], help='Choose format (json or csv)', required='TRUE')
 parser.add_argument('--questionnaire_id', help='Give Questionnaire ID', required='TRUE')
 parser.add_argument('--question_id', help='Give Question ID', required='TRUE')
