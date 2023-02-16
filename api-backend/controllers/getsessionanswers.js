@@ -1,53 +1,34 @@
-const json2csv = require('json2csv').parse;
 const express = require("express");
-const sequelize = require('../util/database');
-var initModels = require("../models/init-models");
-var models = initModels(sequelize);
-const Sequelize = require('sequelize');
-const op = Sequelize.Op;
+const sequelize = require("../util/database");
+const initModels = require("../models/init-models");
+const models = initModels(sequelize);
+const { Op } = require("sequelize");
 
-const Questionnaire = models.questionnaire;
-const Session = models.session;
-const Answer = models.answer;
-
-exports.getSessionAnswers = async (req, res, next) => {
-  const questionnaireID = req.params.questionnaireID;
-  const sessionID = req.params.session;
-
+exports.getSessionAnswers = async (req, res) => {
   try {
-    // find the questionnaire
-    const questionnaire = await Questionnaire.findById(questionnaireID);
-    if (!questionnaire) {
-      return res.status(400).json({ message: 'Questionnaire not found' });
+    const { questionnaireID, session } = req.params;
+
+    if (!questionnaireID || !session) {
+      return res.status(400).json({ msg: "Data Undefined" });
     }
 
-    // find the session
-    const session = await Session.findOne({ _id: sessionID, questionnaire: questionnaireID });
-    if (!session) {
-      return res.status(400).json({ message: 'Session not found' });
-    }
-
-    // find all answers for the session
-    const answers = await Answer.find({ session: sessionID });
-
-    // group the answers by question
-    const answersByQuestion = {};
-    answers.forEach(answer => {
-      if (!answersByQuestion[answer.question]) {
-        answersByQuestion[answer.question] = [];
-      }
-      answersByQuestion[answer.question].push(answer);
+    const answers = await models.answer.findAll({
+      attributes: ["QuestionQuestion_id", "Answer_id"],
+      where: {
+        [Op.and]: [
+          { SessionSession_id: session },
+          { QuestionnaireQuestionnaire_id: questionnaireID },
+        ],
+      },
     });
 
-    // build the response object
-    const response = {
-      questionnaire: questionnaire,
+    return res.json({
+      questionnaireID: questionnaireID,
       session: session,
-      answers: answersByQuestion,
-    };
-
-    res.json(response);
+      answers: answers,
+    });
   } catch (err) {
-    next(err);
+    console.error(err.message);
+    return res.status(500).json({ msg: "Server error" });
   }
 };

@@ -4,9 +4,6 @@ var _option = require("./option");
 var _question = require("./question");
 var _questionnaire = require("./questionnaire");
 var _session = require("./session");
-var _user = require("./user");
-var _system_admins = require("./system_admin");
-var _expired_tokens = require("./expired_tokens");
 
 function initModels(sequelize) {
     var answer = _answer(sequelize, DataTypes);
@@ -14,13 +11,8 @@ function initModels(sequelize) {
     var question = _question(sequelize, DataTypes);
     var questionnaire = _questionnaire(sequelize, DataTypes);
     var session = _session(sequelize, DataTypes);
-    var user = _user(sequelize, DataTypes);
-    var system_admins = _system_admins(sequelize, DataTypes);
-    var expired_tokens = _expired_tokens(sequelize, DataTypes);
 
 
-    questionnaire.belongsTo(user, { foreignKey: "Author_id"});
-    user.hasMany(questionnaire, {foreignKey: "Author_id",onDelete: 'cascade', onUpdate: 'cascade'});
     question.belongsTo(questionnaire,{foreignKey: "QuestionnaireQuestionnaire_id"});
     questionnaire.hasMany(question, {foreignKey: "QuestionnaireQuestionnaire_id", onDelete: 'cascade', onUpdate: 'cascade'});
     answer.belongsTo(question, {foreignKey: "QuestionQuestion_id"});
@@ -29,8 +21,6 @@ function initModels(sequelize) {
     questionnaire.hasMany(session, {foreignKey: "QuestionnaireQuestionnaire_id",onDelete: 'cascade', onUpdate: 'cascade'});
     answer.belongsTo(session, {foreignKey: "SessionSession_id"});
     session.hasMany(answer, { foreignKey: "SessionSession_id", onDelete: 'set null', onUpdate: 'cascade'});
-    session.belongsTo(user, {foreignKey: "Userid"});
-    user.hasMany(session, {foreignKey:"Userid", onDelete: 'cascade', onUpdate: 'cascade'});
     question.hasMany(option, {foreignKey: "QuestionQuestion_id",onDelete: 'cascade', onUpdate: 'cascade'});
     option.belongsTo(question,{foreignKey:"QuestionQuestion_id"});
     option.hasOne(question, {foreignKey: "NextQuestion_id",onDelete: 'set null', onUpdate: 'cascade'});
@@ -47,10 +37,7 @@ function initModels(sequelize) {
         option,
         question,
         questionnaire,
-        session,
-        user,
-        system_admins,
-        expired_tokens
+        session
     };
 }
 module.exports = initModels;

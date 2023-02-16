@@ -5,13 +5,7 @@ const data_importer = require('./data_importer');
 
 function populate() {
 
-    data_importer("../data/user.csv", models.user, false)
-        // .then( () => {
-        //     return data_importer("../data/session.csv", models.session, false)
-        // })
-        .then( () => {
-            return data_importer("../data/questionnaire.csv", models.questionnaire, false)
-        })
+        data_importer("../data/questionnaire.csv", models.questionnaire, false)
         .then( () => {
             return data_importer("../data/question.csv", models.question, false)
         })

@@ -12,37 +12,38 @@ var models = initModels(sequelize);
 
 const fs = require("fs");
 const csv = require("fast-csv");
+const path = require("path");
 
-exports.postReset = (req, res, next) => {
+// exports.postReset = (req, res, next) => {
 
-    const adminPw = "$2y$12$3hLJswSlH3RHShXDwXuH/OQU98hFYcTbA7xqOlKQKuYkX8yYYKaMC"
+//     const adminPw = "$2y$12$3hLJswSlH3RHShXDwXuH/OQU98hFYcTbA7xqOlKQKuYkX8yYYKaMC"
 
-    models.system_admins.findOne({ where: {username: "admin"} })
-        .then(system_admin => {
-            if (!system_admin) {
-                models.system_admins.create({
-                    username : "admin",
-                    password : adminPw
-                })
-                    .then (
-                        sequelize.query('TRUNCATE TABLE ' + '`session`')
-                            .then(() => {
-                                return res.status(200).json({status: "OK! sessions cleared"});
-                            })
-                            .catch(err => {
-                                return res.status(500).json({status: "Sessions reset failed"});
-                            })
-                    )
-                    .catch (err => {
-                        return res.status(500).json({status: "Sessions reset failed"});
-                    })
-            }
+//     models.system_admins.findOne({ where: {username: "admin"} })
+//         .then(system_admin => {
+//             if (!system_admin) {
+//                 models.system_admins.create({
+//                     username : "admin",
+//                     password : adminPw
+//                 })
+//                     .then (
+//                         sequelize.query('TRUNCATE TABLE ' + '`session`')
+//                             .then(() => {
+//                                 return res.status(200).json({status: "OK! sessions cleared"});
+//                             })
+//                             .catch(err => {
+//                                 return res.status(500).json({status: "Sessions reset failed"});
+//                             })
+//                     )
+//                     .catch (err => {
+//                         return res.status(500).json({status: "Sessions reset failed"});
+//                     })
+//             }
 
-        }).catch (err => {
-        return res.status(500).json({message: "Internal server error."});
-    })
+//         }).catch (err => {
+//         return res.status(500).json({message: "Internal server error."});
+//     })
 
-}
+// }
 
 // exports.postQuestionnaire = (req, res) => {
 //     const questionnaireID = req.params.questionnaireID;
@@ -74,27 +75,7 @@ exports.postReset = (req, res, next) => {
 //       })
 //   };
 
-exports.getUser = (req, res, next) => {
 
-    const email = req.params.username;
-    const isAdministrator = req.query.isAdministrator;
-
-    if (!email) return res.status(400).json({message: 'Some parameters are undefined'});
-
-    if (isAdministrator === 'true') {
-
-        models.user.findOne({ where: {email: email} })
-            .then(administratorDoc => {
-                if (!administratorDoc) {
-                    return res.status(402).json({message: 'User was not found!'});
-                }
-                res.send(administratorDoc);
-            })
-            .catch(err => {
-                return res.status(500).json({message: 'Internal server error.'})
-            })
-    }
-}
 
 exports.getHealthcheck = (req, res, next) => {
 
@@ -107,103 +88,16 @@ exports.getHealthcheck = (req, res, next) => {
         })
 }
 
-// exports.login = (req, res, next) => {
-//
-//     const username = req.body.username;
-//     const password = req.body.password;
-//
-//     if (!username || !password) return res.status(400).json({message: 'Some parameters are undefined'});
-//
-//     let loadedAdmin;
-//     models.system_admins.findOne({ where: {username: username} })
-//         .then(systemAdmin => {
-//             if (!systemAdmin) {
-//                 res.status(401).json({message:'Wrong credentials!'});
-//             }
-//             loadedAdmin = systemAdmin;
-//             return bcrypt.compare(password, systemAdmin.password);
-//         })
-//         .then (isEqual => {
-//             if (!isEqual) {
-//                 res.status(401).json({message:'Wrong credentials!'});
-//             }
-//             const token = jwt.sign(
-//                 { user: {
-//                         system_admin_id: loadedAdmin.system_admin_id,
-//                         role: loadedAdmin.role
-//                     } },
-//                 'antegeiafile',
-//                 { expiresIn: '1h' }
-//             );
-//             res.status(200).json({
-//                 token: token
-//             });
-//         })
-//         .catch(err => {
-//             return res.status(500).json({message: 'Internal server error.'})
-//         });
-// }
 
-exports.postUsermod = (req, res, next) => {
 
-    // get dynamic parameters and query parameter
-    const username = req.params.username;
-    const password = req.params.password;
-    const isAdministrator = req.query.isAdministrator;
+exports.postQuestionnaire = async (req, res, next) => {
 
-    if (!username || !password) return res.status(400).json({message: 'Some parameters are undefined'});
-
-    // if the user is administrator user
-    if (isAdministrator === 'true') {
-        // try get administrator from db
-        models.user.findOne({ where: { email: email } })
-            .then (administratorUser => {
-                // if not exists must be created
-                if (!administratorUser) {
-                    bcrypt.hash(password, 12).then(hashedPw => {
-                        const newAdministratorUser = models.user.create({
-                            username : username,
-                            email : email,
-                            password : hashedPw
-                        });
-                        res.status(201).json({signup: 'true', message: 'Account created succesfully!'});
-                    })
-                        .catch(err => {
-                            return res.status(500).json({message: 'Internal server error.'})
-                        });
-                }
-
-                // Administrator user is already signed up and wants to change pw
-                else {
-                    bcrypt.hash(password, 12).then(hashedPw => {
-                        administratorUser.password = hashedPw;
-                        administratorUser.save();
-                    })
-                        .then(result => {
-                            res.status(200).json({change_password: 'true', message: 'Password changed succesfully!'});
-                        })
-                        .catch(err => {
-                            return res.status(500).json({message: 'Internal server error.'})
-                        });
-                }
-            })
-            .catch(err => {
-                return res.status(500).json({message: 'Internal server error.'})
-            });
-    }
-};
-
-exports.postQuestionnaire = async (req, res) => {
-
-    let option = [];
-
-    const questionnaireID = req.body.questionnaireID;
-
+    const questionnaireID = req.params.questionnaireID;
     try {
-        const deletedOptions = await option.destroy({
-            where: {QuestionnaireQuestionnaire_id: questionnaireID}
+        const deletedAnswers = await models.option.destroy({
+            where: { QuestionnaireQuestionnaire_id: questionnaireID }
         });
-        res.json({status: 'OK'});
+        res.json({ status: 'OK' });
     } catch (error) {
         res.status(500).json({
             status: 'failed',

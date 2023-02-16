@@ -9,18 +9,13 @@ from prettytable import DEFAULT
 
 def doanswer(ar): 
     url = 'http://localhost:9103/intelliq_api/doanswer/' + ar.questionnaire_id + '/' + ar.question_id + '/' + ar.session_id + '/' + ar.option_id 
-    headers = {'x-observatory-auth' : ar.apikey}
-    res = requests.post(url, data=ar.option_id, headers=headers, verify=False)
+    res = requests.post(url, data=ar.option_id, verify=False)
     print(res.status_code)
     print(json.dumps(res.json(), indent=4, sort_keys=False)) # maybe just print res.json, we will see in testing
-    #json = res.json() #in reality a python dict
-    #print(json)
-    #print(json['accessToken'])
     return True
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--apikey', help='Give API key', required='TRUE')
 parser.add_argument('--questionnaire_id', help='Give Questionnaire ID', required='TRUE')
 parser.add_argument('--question_id', help='Give Question ID', required='TRUE')
 parser.add_argument('--session_id', help='Give Session ID', required='TRUE')

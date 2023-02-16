@@ -11,14 +11,15 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        type: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         Mandatory: {
             type: DataTypes.BOOLEAN,
             allowNull: false
         },
+        type: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+       
         QuestionnaireQuestionnaire_id: {
             type: DataTypes.STRING,
             primaryKey: true,
@@ -44,14 +45,7 @@ module.exports = function(sequelize, DataTypes) {
 
                 ]
             },
-            // {
-            //     name: "Question_id_UNIQUE",
-            //     unique: true,
-            //     using: "BTREE",
-            //     fields: [
-            //         { name: "Question_id" },
-            //     ]
-            // },
+            
             {
                 name: "QuestionnaireQuestionnaire_id_UNIQUE",
                 unique: false,
