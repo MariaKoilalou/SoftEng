@@ -35,8 +35,10 @@ exports.postDoAnswer = async (req, res) => {
     }
 
     const answer = await models.answer.create({
-      Selected_option_id: optionID,
+      Answer_id: "1312",
+      Text : optionID,
       QuestionQuestion_id: questionID,
+      QuestionnaireQuestionnaire_id : questionnaireID,
       SessionSession_id: sessionID
     });
     return res.sendStatus(200);
