@@ -5,7 +5,7 @@ let sequelize;
 if (process.env.NODE_ENV === undefined) process.env.NODE_ENV = 'run'
 
 if (process.env.NODE_ENV.trim() === 'test') {
-    sequelize = new Sequelize('intelliq_api-test', 'root', 'Nikos6942013374', {
+    sequelize = new Sequelize('intelliq_api-test', 'root', 'Epsentia2310@', {
         dialect: 'mysql',
         host: 'localhost',
         port: '3306',
@@ -13,7 +13,7 @@ if (process.env.NODE_ENV.trim() === 'test') {
     });
 }
 else {
-    sequelize = new Sequelize('intelliq_api', 'root', 'Nikos6942013374', {
+    sequelize = new Sequelize('intelliq_api', 'root', 'Epsentia2310@', {
         dialect: 'mysql',
         host: 'localhost',
         port: '3306',
