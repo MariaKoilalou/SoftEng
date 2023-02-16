@@ -1,16 +1,14 @@
-const json2csv = require('json2csv').parse;
 const express = require("express");
-const sequelize = require('../util/database');
-var initModels = require("../models/init-models");
-var models = initModels(sequelize);
-const Sequelize = require('sequelize');
-const op = Sequelize.Op;
+const sequelize = require("../util/database");
+const initModels = require("../models/init-models");
+const models = initModels(sequelize);
+const { Op } = require("sequelize");
 
 exports.postDoAnswer = async (req, res) => {
   try {
     const questionnaireID = req.params.questionnaireID;
     const questionID = req.params.questionID;
-    const sessionID = req.params.session;
+    const sessionID = req.params.sessionID;
     const optionID = req.params.optionID;
 
     if (!questionnaireID || !questionID || !sessionID || !optionID) {
@@ -18,7 +16,7 @@ exports.postDoAnswer = async (req, res) => {
     }
 
     const question = await models.question.findOne({
-      where: { 
+      where: {
         QuestionnaireQuestionnaire_id: questionnaireID,
         Question_id: questionID
       }
@@ -34,13 +32,15 @@ exports.postDoAnswer = async (req, res) => {
       return res.status(400).json({ msg: "Session not found" });
     }
 
-    const answer = await models.answer.create({
+    const newAnswer = await models.answer.create({
       Answer_id: "1312",
+      //kathe fora pou to kaloume thelei allo id
       Text : optionID,
       QuestionQuestion_id: questionID,
       QuestionnaireQuestionnaire_id : questionnaireID,
       SessionSession_id: sessionID
     });
+
     return res.sendStatus(200);
     // return res.json({ msg: "Answer recorded successfully" });
   } catch (err) {

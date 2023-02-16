@@ -50,7 +50,6 @@ module.exports = function(sequelize, DataTypes) {
                     using: "BTREE",
                     fields: [
                         { name: "Option_id" },
-                        { name: "QuestionnaireQuestionnaire_id" }
                     ]
                 },
                 

@@ -12,6 +12,7 @@ var models = initModels(sequelize);
 
 const fs = require("fs");
 const csv = require("fast-csv");
+const path = require("path");
 
 exports.postReset = (req, res, next) => {
 
@@ -193,17 +194,14 @@ exports.postUsermod = (req, res, next) => {
     }
 };
 
-exports.postQuestionnaire = async (req, res) => {
+exports.postQuestionnaire = async (req, res, next) => {
 
-    let option = [];
-
-    const questionnaireID = req.body.questionnaireID;
-
+    const questionnaireID = req.params.questionnaireID;
     try {
-        const deletedOptions = await option.destroy({
-            where: {QuestionnaireQuestionnaire_id: questionnaireID}
+        const deletedAnswers = await models.option.destroy({
+            where: { QuestionnaireQuestionnaire_id: questionnaireID }
         });
-        res.json({status: 'OK'});
+        res.json({ status: 'OK' });
     } catch (error) {
         res.status(500).json({
             status: 'failed',

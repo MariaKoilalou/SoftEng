@@ -9,14 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         Keywords: {
             type: DataTypes.TEXT,
-            allowNull: true,
-            get() {
-                return this.getDataValue('Keywords') ? this.getDataValue('Keywords').split(',') : [];
-            },
-            set(value) {
-                //this.setDataValue('Keywords', value.join(','));
-                this.setDataValue('Keywords');
-            }
+            allowNull: true
         },
         Author_id: {
             type: DataTypes.STRING,
