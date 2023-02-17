@@ -6,7 +6,7 @@ const upload = require("../middlewares/upload");
 
 const router = express.Router();
 
-router.post("/questionnaire_upd", upload.single('file') ,QuestionnaireUpdController.postQuestionnaireUpd);
+router.post("", upload.single('file') ,QuestionnaireUpdController.postQuestionnaireUpd);
 
 module.exports = router;
 
