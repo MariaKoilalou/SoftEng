@@ -3,7 +3,7 @@ const sequelize = require("../util/database");
 const initModels = require("../models/init-models");
 const models = initModels(sequelize);
 const { Op } = require("sequelize");
-const { Parser } = require("json2csv");
+const json2csv = require('json2csv').parse;
 
 exports.getQuestionAnswers = async (req, res) => {
   try {
@@ -33,16 +33,28 @@ exports.getQuestionAnswers = async (req, res) => {
           { QuestionnaireQuestionnaire_id: questionnaireID },
         ],
       },
+      order: [["SessionSession_id", "ASC"]]
     });
 
     if (format === "csv") {
-      const fields = ["SessionSession_id", "Answer_id"];
-      const json2csvParser = new Parser({ fields });
-      const csv = json2csvParser.parse(answers);
-      res.setHeader("Content-Type", "text/csv");
-      res.setHeader("Content-Disposition", 'attachment; filename="answers.csv"');
-      return res.send(csv);
-    } else {
+      
+      const answersList = answers.map((answers) => [
+        answers.SessionSession_id, answers.Answer_id
+      ]);
+      const fields = ["Questionnaire_id", "Question_id", "Session_id_Answer_id"];
+      const result = {
+        Questionnaire_id: questionnaireID,
+        Question_id: questionID,
+        Session_id_Answer_id: answersList,
+      };
+
+      const csv = json2csv(result, { fields })
+      const html = `<pre>${csv}</pre>`;
+      res.setHeader("Content-Type", "text/html");
+      return res.send(html);
+    }
+    
+    else {
       return res.json({
         questionnaireID: questionnaireID,
         questionID: questionID,
