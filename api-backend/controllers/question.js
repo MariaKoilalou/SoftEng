@@ -3,7 +3,7 @@ const sequelize = require('../util/database');
 const initModels = require("../models/init-models");
 const models = initModels(sequelize);
 const Sequelize = require('sequelize');
-const op = Sequelize.Op;
+//const op = Sequelize.Op;
 const json2csv = require('json2csv').parse;
 
 exports.getQuestion = async (req, res) => {
@@ -47,34 +47,48 @@ exports.getQuestion = async (req, res) => {
       return res.status(400).json({ msg: "Question not found" });
     }
 
-    const questt = await models.question.findOne({
-      where: {
-        QuestionnaireQuestionnaire_id: questionnaireID,
-        Question_id: questionID
-      }
-    });
-
-    if (!questt) {
-      return res.status(400).json({ msg: "Question not found" });
-    }
-
     // Define the toCsv() function
-    question.toCsv = function () {
-      const csvFields = ["QuestionnaireQuestionnaire_id", "Question_id", "Text", "type", "Mandatory"];
-      const csvOptions = { fields: csvFields };
-      const csvData = [question];
-      return json2csv(csvData, csvOptions);
-    };
+    // question.toCsv = function () {
+    //   const csvFields = ["QuestionnaireQuestionnaire_id", "Question_id", "Text", "type", "Mandatory"];
+    //   const csvOptions = { fields: csvFields };
+    //   const csvData = [question];
+    //   return json2csv(csvData, csvOptions);
+    // };
+
+    // if (format === "csv") {
+    //   const csvString = question.toCsv();
+    //   res.setHeader("Content-Type", "text/csv");
+    //   res.setHeader("Content-Disposition", "inline");
+    //   res.write(csvString);
+    //   return res.end();
+    // }
 
     if (format === "csv") {
-      const csvString = question.toCsv();
-      res.setHeader("Content-Type", "text/csv");
-      res.setHeader("Content-Disposition", "inline");
-      res.write(csvString);
-      return res.end();
+      
+      const optionList = question.options.map((option) => [
+        option.Option_id, 
+        option.OptText, 
+        option.NextQuestion_id
+      ]);
+      const fields = ["Questionnaire_id", "Question_id", "Question_text", 
+                      "Required", "Type", "OptionID_OptionText_NextQuestion"];
+      const result = {
+        Questionnaire_id: questionnaireID,
+        Question_id: questionID,
+        Question_text: question.Text,
+        Required: question.Mandatory,
+        Type: question.type,
+        OptionID_OptionText_NextQuestion: optionList
+      };
+
+      const csv = json2csv(result, { fields })
+      const html = `<pre>${csv}</pre>`;
+      res.setHeader("Content-Type", "text/html");
+      return res.send(html);
     }
 
     return res.json(question);
+
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ msg: "Server error" });
