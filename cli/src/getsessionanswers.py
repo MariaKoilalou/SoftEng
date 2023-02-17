@@ -23,7 +23,6 @@ def getsessionanswers(ar):
         x.set_style(DEFAULT)
         print(x)
         f.close()
-    #while(1):{}
     return True
 
 

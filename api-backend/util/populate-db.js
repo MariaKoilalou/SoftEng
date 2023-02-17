@@ -5,18 +5,18 @@ const data_importer = require('./data_importer');
 
 function populate() {
 
-        data_importer("../data/questionnaire.csv", models.questionnaire, false)
+        data_importer("../data/questionnaire.json", models.questionnaire, false)
         .then( () => {
-            return data_importer("../data/question.csv", models.question, false)
+            return data_importer("../data/question.json", models.question, false)
         })
         .then( () => {
-            return data_importer("../data/option.csv", models.option, false)
+            return data_importer("../data/option.json", models.option, false)
         })
         .then( () => {
-            return data_importer("../data/session.csv", models.session, false)
+            return data_importer("../data/session.json", models.session, false)
         })
         .then( () => {
-            return data_importer("../data/answer.csv", models.answer, false)
+            return data_importer("../data/answer.json", models.answer, false)
         })
 }
 

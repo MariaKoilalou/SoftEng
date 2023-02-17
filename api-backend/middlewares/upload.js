@@ -1,12 +1,20 @@
 const multer = require("multer");
 
-const csvFilter = (req, file, cb) => {
-    if (file.mimetype.includes("csv")) {
-        cb(null, true);
+// const csvFilter = (req, file, cb) => {
+//     if (file.mimetype.includes("csv") || file.mimetype.includes("json")) {
+//         cb(null, true);
+//     } else {
+//         cb("Please upload only csv or json files.", false);
+//     }
+// };
+
+const jsonFilter = (req, file, cb) => {
+    if (file.mimetype.includes("json")) {
+      cb(null, true);
     } else {
-        cb("Please upload only csv file.", false);
+      cb("Please upload only JSON files.", false);
     }
-};
+  };
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -17,5 +25,5 @@ var storage = multer.diskStorage({
     }
 })
 
-var uploadFile = multer({ storage: storage, fileFilter: csvFilter });
+var uploadFile = multer({ storage: storage, fileFilter: jsonFilter });
 module.exports = uploadFile;
