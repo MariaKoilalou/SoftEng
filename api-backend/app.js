@@ -14,6 +14,7 @@ const gethealthcheck = require('./routes/gethealthcheck')
 const resetq = require('./routes/resetq')
 const resetall = require('./routes/resetall')
 const getquestionoptions = require('./routes/getquestionoptions');
+const getsessionnumber = require('./routes/getsessionnumber');
 /* end of ROUTES and how to import routes */
 
 const app = express();
@@ -41,6 +42,7 @@ app.use('/intelliq_api/questionnaireupd', questionnaireupd);
 app.use('/intelliq_api/resetq', resetq);
 app.use('/intelliq_api/resetall', resetall);
 app.use('/intelliq_api/getquestionoptions', getquestionoptions);
+app.use('/intelliq_api/getsessionnumber', getsessionnumber);
 
 
 // /*End of routes used by our project */
