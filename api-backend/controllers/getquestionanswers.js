@@ -3,16 +3,17 @@ const sequelize = require("../util/database");
 const initModels = require("../models/init-models");
 const models = initModels(sequelize);
 const { Op } = require("sequelize");
+const { Parser } = require("json2csv");
 
 exports.getQuestionAnswers = async (req, res) => {
   try {
     const { questionnaireID, questionID } = req.params;
+    const format = req.query.format;
 
     if (!questionnaireID || !questionID) {
       return res.status(400).json({ msg: "Data Undefined" });
     }
 
-    
     const question = await models.question.findOne({
       where: {
         QuestionnaireQuestionnaire_id: questionnaireID,
@@ -34,11 +35,20 @@ exports.getQuestionAnswers = async (req, res) => {
       },
     });
 
-    return res.json({
-      questionnaireID: questionnaireID,
-      questionID: questionID,
-      answers: answers,
-    });
+    if (format === "csv") {
+      const fields = ["SessionSession_id", "Answer_id"];
+      const json2csvParser = new Parser({ fields });
+      const csv = json2csvParser.parse(answers);
+      res.setHeader("Content-Type", "text/csv");
+      res.setHeader("Content-Disposition", 'attachment; filename="answers.csv"');
+      return res.send(csv);
+    } else {
+      return res.json({
+        questionnaireID: questionnaireID,
+        questionID: questionID,
+        answers: answers,
+      });
+    }
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ msg: "Server error" });
