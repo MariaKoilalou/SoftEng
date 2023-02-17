@@ -3,7 +3,7 @@ import requests
 import json
 
 def healthcheck(ar):
-	res = requests.get('http://localhost:9103/intelliq_api/admin/healthcheck', verify=False)
+	res = requests.get('http://localhost:9103/intelliq_api/healthcheck', verify=False)
 	print(res.status_code)
 	print(res.json())  #CSV?????
 	while(1):
