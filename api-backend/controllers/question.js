@@ -1,7 +1,7 @@
 const express = require("express");
 const sequelize = require('../util/database');
-var initModels = require("../models/init-models");
-var models = initModels(sequelize);
+const initModels = require("../models/init-models");
+const models = initModels(sequelize);
 const Sequelize = require('sequelize');
 const op = Sequelize.Op;
 const json2csv = require('json2csv').parse;
@@ -13,20 +13,20 @@ exports.getQuestion = async (req, res) => {
     const format = req.query.format;
 
     const question = await models.question.findOne({
-        where: { 
-            QuestionnaireQuestionnaire_id: questionnaireID,
-            Question_id: questionID
-        },
-        include: [
+      where: {
+        QuestionnaireQuestionnaire_id: questionnaireID,
+        Question_id: questionID
+      },
+      include: [
         {
-            model: models.option,
-            as: "options",
-            where: {
-                QuestionnaireQuestionnaire_id: questionnaireID,
-                QuestionQuestion_id: questionID
-            },
-            attributes: ["Option_id", "OptText", "NextQuestion_id"],
-            order: [["Option_id", "ASC"]]
+          model: models.option,
+          as: "options",
+          where: {
+            QuestionnaireQuestionnaire_id: questionnaireID,
+            QuestionQuestion_id: questionID
+          },
+          attributes: ["Option_id", "OptText", "NextQuestion_id"],
+          order: [["Option_id", "ASC"]]
         }
       ],
       attributes: ["QuestionnaireQuestionnaire_id", "Question_id", "Text", "type", "Mandatory"]
@@ -35,7 +35,7 @@ exports.getQuestion = async (req, res) => {
     if (!questionnaireID || !questionID) {
       return res.status(400).json({ msg: "Data Undefined" });
     }
-    
+
     const quest = await models.question.findOne({
       where: {
         QuestionnaireQuestionnaire_id: questionnaireID,
@@ -46,7 +46,6 @@ exports.getQuestion = async (req, res) => {
     if (!quest) {
       return res.status(400).json({ msg: "Question not found" });
     }
-    
 
     const questt = await models.question.findOne({
       where: {
@@ -58,13 +57,6 @@ exports.getQuestion = async (req, res) => {
     if (!questt) {
       return res.status(400).json({ msg: "Question not found" });
     }
-
-   
-
-
-
-
-
 
     // Define the toCsv() function
     question.toCsv = function () {
@@ -82,7 +74,7 @@ exports.getQuestion = async (req, res) => {
       return res.end();
     }
 
-    return res.send(question.toCsv());
+    return res.json(question);
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ msg: "Server error" });
