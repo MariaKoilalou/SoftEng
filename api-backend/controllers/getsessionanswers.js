@@ -3,7 +3,7 @@ const sequelize = require("../util/database");
 const initModels = require("../models/init-models");
 const models = initModels(sequelize);
 const { Op } = require("sequelize");
-const { Parser } = require('json2csv');
+const json2csv = require('json2csv').parse;
 
 exports.getSessionAnswers = async (req, res) => {
   try {
@@ -26,7 +26,6 @@ exports.getSessionAnswers = async (req, res) => {
       return res.status(400).json({ msg: "Session not found" });
     }
 
-
     const answers = await models.answer.findAll({
       attributes: ["QuestionQuestion_id", "Answer_id"],
       where: {
@@ -35,23 +34,37 @@ exports.getSessionAnswers = async (req, res) => {
           { QuestionnaireQuestionnaire_id: questionnaireID },
         ],
       },
+      order: [["QuestionQuestion_id", "ASC"]]
     });
 
+    
+
     if (format === "csv") {
-      const fields = ["QuestionQuestion_id", "Answer_id"];
-      const csv = new Parser({ fields }).parse(answers);
+      
+      const answersList = answers.map((answer) => [
+        answer.QuestionQuestion_id, answer.Answer_id
+      ]);
+      const fields = ["Questionnaire_id", "Session_id", "Question_id_Answer_id"];
+      const result = {
+        Questionnaire_id: questionnaireID,
+        Session_id: session,
+        Question_id_Answer_id: answersList,
+      };
 
-      res.setHeader("Content-Type", "text/csv");
-      res.setHeader("Content-Disposition", "attachment; filename=answers.csv");
+      const csv = json2csv(result, { fields })
+      const html = `<pre>${csv}</pre>`;
+      res.setHeader("Content-Type", "text/html");
+      return res.send(html);
+    } 
 
-      return res.send(csv);
-    } else {
+    else {
       return res.json({
         questionnaireID: questionnaireID,
         session: session,
         answers: answers,
       });
     }
+
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ msg: "Server error" });

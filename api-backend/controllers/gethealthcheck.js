@@ -11,7 +11,6 @@ var models = initModels(sequelize);
 // end of require models
 
 const fs = require("fs");
-const csv = require("fast-csv");
 const path = require("path");
 
 
