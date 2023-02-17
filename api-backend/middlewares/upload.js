@@ -8,6 +8,14 @@ const multer = require("multer");
 //     }
 // };
 
+const jsonFilter = (req, file, cb) => {
+    if (file.mimetype.includes("json")) {
+      cb(null, true);
+    } else {
+      cb("Please upload only JSON files.", false);
+    }
+  };
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, __dirname + '/../uploads')
@@ -17,5 +25,5 @@ var storage = multer.diskStorage({
     }
 })
 
-var uploadFile = multer({ storage: storage/*, fileFilter: csvFilter*/ });
+var uploadFile = multer({ storage: storage, fileFilter: jsonFilter });
 module.exports = uploadFile;
