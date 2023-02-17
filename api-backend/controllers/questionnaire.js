@@ -18,7 +18,7 @@ exports.getQuestionnaire = async (req, res) => {
           where: {
             QuestionnaireQuestionnaire_id: id
           },
-          attributes: ["Question_id", "Text", "Type", "Mandatory"],
+          attributes: ["Question_id", "Text", "type", "Mandatory"],
           order: [["Question_id", "ASC"]]
         }
       ],
@@ -28,27 +28,28 @@ exports.getQuestionnaire = async (req, res) => {
     if (!id) {
       return res.status(400).json({ msg: "Questionnaire ID Undefined" });
     }
-     
-      
-    const questt = await models.question.findOne({
-      where: {
-        QuestionnaireQuestionnaire_id: id,
-      }
-    });
-
-    if (!questt) {
-      return res.status(400).json({ msg: "Questionnaire not found" });
-    }
-
-
-
 
     if (format === "csv") {
-      const fields = ["Question_id", "Text", "Type", "Mandatory"];
-      const csv = json2csv(questionnaire.questions, { fields });
-      res.setHeader("Content-Type", "text/plain");
+      
+      const questionList = questionnaire.questions.map((questions) => [
+        questions.Question_id, 
+        questions.Text, 
+        questions.Mandatory,
+        questions.type
+      ]);
+      const fields = ["Questionnaire_id", "Questionnaire_title", 
+                      "keywords", "Qid_Qtext_Qrequired_Qtypw"];
+      const result = {
+        Questionnaire_id: id,
+        Questionnaire_title: questionnaire.Title,
+        keywords: questionnaire.Keywords,
+        Qid_Qtext_Qrequired_Qtypw: questionList
+      };
 
-      return res.send(csv);
+      const csv = json2csv(result, { fields })
+      const html = `<pre>${csv}</pre>`;
+      res.setHeader("Content-Type", "text/html");
+      return res.send(html);
     }
 
     const response = {
