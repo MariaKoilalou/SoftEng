@@ -69,7 +69,7 @@ exports.postQuestionnaireUpd = (req, res) => {
                 models.option.bulkCreate(optionModels),
             ])
                 .then(() => {
-                    return res.status(201).send({
+                    return res.status(200).send({
                         message: "Questionnaire data has been successfully inserted into the database!",
                     });
                 })

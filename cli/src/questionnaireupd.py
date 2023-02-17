@@ -7,10 +7,10 @@ from prettytable import from_csv
 from prettytable import DEFAULT
 
 def questionnaire_upd(ar):
-    url = 'http://localhost:9103/intelliq_api/admin/questionnaire_upd/' + ar.source
+    url = 'http://localhost:9103/intelliq_api/questionnaire_upd/'
     if (ar.format == 'csv'):
         url = url + '?format=csv'
-    res = requests.get(url, verify=False)
+    res = requests.post(url, data = ar.source, verify=False)
     print(res.status_code)
     if (ar.format == 'json' and res.status_code == 200):
         print(json.dumps(res.json(), indent=4, sort_keys=False))
@@ -23,6 +23,7 @@ def questionnaire_upd(ar):
         x.set_style(DEFAULT)
         print(x)
         f.close()
+    while(1) : {}
     return True
 
 
