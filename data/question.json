@@ -1,0 +1,296 @@
+[
+    {
+      "Question_id": "-",
+      "Text": "Submit",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0000"
+    },
+    {
+      "Question_id": "0001",
+      "Text": "What is your age group?",
+      "type": "profile",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0001"
+    },
+    {
+      "Question_id": "0002",
+      "Text": "Do you have any dietery restrictions?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0001"
+    },
+    {
+      "Question_id": "0003",
+      "Text": "What are your dietary restrictions",
+      "type": "profile",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0001"
+    },
+    {
+      "Question_id": "0004",
+      "Text": "Do you excersise?",
+      "type": "profile",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0001"
+    },
+    {
+      "Question_id": "0005",
+      "Text": "How often do you exercise?",
+      "type": "profile",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0001"
+    },
+    {
+      "Question_id": "0006",
+      "Text": "How many servings of fruits and vegetables do you typically consume per day?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0001"
+    },
+    {
+      "Question_id": "0007",
+      "Text": "What is your typical source of protein?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0001"
+    },
+    {
+      "Question_id": "0008",
+      "Text": "Do you have any food allergies or intolerances that affect your diet?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0001"
+    },
+    {
+      "Question_id": "0009",
+      "Text": "How often do you consume sugary or high-fat foods and beverages (e.g., candy, soda, fried foods)?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0001"
+    },
+    {
+      "Question_id": "0010",
+      "Text": "Are there many available options in restaurants for you?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0001"
+    },
+    {
+      "Question_id": "0011",
+      "Text": "What is your age group?",
+      "type": "profile",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0002"
+    },
+    {
+      "Question_id": "0012",
+      "Text": "What is your gender?",
+      "type": "profile",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0002"
+    },
+    {
+      "Question_id": "0013",
+      "Text": "Do you pay attention to your personal style?",
+      "type": "profile",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0002"
+    },
+    {
+      "Question_id": "0014",
+      "Text": "What are your favorite items or accessories to wear?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0002"
+    },
+    {
+      "Question_id": "0015",
+      "Text": "How much do you spend on clothing per month?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0002"
+    },
+    {
+      "Question_id": "0016",
+      "Text": "How often do you purchase new clothing or accessories?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0002"
+    },
+    {
+      "Question_id": "0017",
+      "Text": "Do you prioritize style or comfort?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0002"
+    },
+    {
+      "Question_id": "0018",
+      "Text": "Do you prefer monochrome outfits or daring prints and patterns?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0002"
+    },
+    {
+      "Question_id": "0019",
+      "Text": "What is your age group?",
+      "type": "profile",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0003"
+    },
+    {
+      "Question_id": "0020",
+      "Text": "Are you currently studying/working?",
+      "type": "profile",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0003"
+    },
+    {
+      "Question_id": "0021",
+      "Text": "Do you study/work from home?",
+      "type": "profile",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0003"
+    },
+    {
+      "Question_id": "0022",
+      "Text": "Do you use public transport?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0003"
+    },
+    {
+      "Question_id": "0023",
+      "Text": "What means of public transport do you mainly use?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0003"
+    },
+    {
+      "Question_id": "0024",
+      "Text": "How long is your daily commute, on average?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0003"
+    },
+    {
+      "Question_id": "0025",
+      "Text": "Are there any aspects of your commute that you find particularly challenging or frustrating?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0003"
+    },
+    {
+      "Question_id": "0026",
+      "Text": "What are those aspects?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0003"
+    },
+    {
+      "Question_id": "0027",
+      "Text": "What is your age group?",
+      "type": "profile",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0004"
+    },
+    {
+      "Question_id": "0028",
+      "Text": "What is your gender?",
+      "type": "profile",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0004"
+    },
+    {
+      "Question_id": "0029",
+      "Text": "Do you prefer multiplayer or singleplayer games?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0004"
+    },
+    {
+      "Question_id": "0030",
+      "Text": "What was your favorite game of this year?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0004"
+    },
+    {
+      "Question_id": "0031",
+      "Text": "Do you prefer action or story driven games?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0004"
+    },
+    {
+      "Question_id": "0032",
+      "Text": "Do you prefer Playstation or PC for gaming?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0004"
+    },
+    {
+      "Question_id": "0033",
+      "Text": "Do you own a PlayStation 5?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0004"
+    },
+    {
+      "Question_id": "0034",
+      "Text": "Do you own a PC which costs more than 1000$?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0004"
+    },
+    {
+      "Question_id": "0035",
+      "Text": "What is your age group?",
+      "type": "profile",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0005"
+    },
+    {
+      "Question_id": "0036",
+      "Text": "What is your gender?",
+      "type": "profile",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0005"
+    },
+    {
+      "Question_id": "0037",
+      "Text": "What is your favorite sport?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0005"
+    },
+    {
+      "Question_id": "0038",
+      "Text": "Do you prefer team sports or individual sports?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0005"
+    },
+    {
+      "Question_id": "0039",
+      "Text": "What position do you play in?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0005"
+    },
+    {
+      "Question_id": "0040",
+      "Text": "Do you find there is more passion when you compete alone?",
+      "type": "question",
+      "Mandatory": false,
+      "QuestionnaireQuestionnaire_id": "0005"
+    },
+    {
+      "Question_id": "0041",
+      "Text": "Do you find team sports to be more competitive than individual sports?",
+      "type": "question",
+      "Mandatory": true,
+      "QuestionnaireQuestionnaire_id": "0005"
+    }
+  ]

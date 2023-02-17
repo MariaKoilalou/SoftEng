@@ -2,7 +2,7 @@ const express = require("express");
 const sequelize = require('../util/database');
 const initModels = require("../models/init-models");
 const models = initModels(sequelize);
-const json2csv = require('json2csv').parse;
+
 
 exports.ResetAll = async (req, res) => {
     try {

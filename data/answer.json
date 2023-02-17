@@ -1,0 +1,317 @@
+[
+    {
+      "Answer_id": "0001",
+      "Text": "46-60",
+      "QuestionQuestion_id": "0001",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0001"
+    },
+    {
+      "Answer_id": "0002",
+      "Text": "Yes",
+      "QuestionQuestion_id": "0002",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0001"
+    },
+    {
+      "Answer_id": "0003",
+      "Text": "Vegetarian",
+      "QuestionQuestion_id": "0003",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0001"
+    },
+    {
+      "Answer_id": "0004",
+      "Text": "No",
+      "QuestionQuestion_id": "0004",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0001"
+    },
+    {
+      "Answer_id": "0005",
+      "Text": "2 or 3",
+      "QuestionQuestion_id": "0006",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0001"
+    },
+    {
+      "Answer_id": "0006",
+      "Text": "beans and vegetables",
+      "QuestionQuestion_id": "0007",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0001"
+    },
+    {
+      "Answer_id": "0007",
+      "Text": "No",
+      "QuestionQuestion_id": "0008",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0001"
+    },
+    {
+      "Answer_id": "0008",
+      "Text": "Monthly",
+      "QuestionQuestion_id": "0009",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0001"
+    },
+    {
+      "Answer_id": "0009",
+      "Text": "18-30",
+      "QuestionQuestion_id": "0001",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0010",
+      "Text": "Yes",
+      "QuestionQuestion_id": "0002",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0011",
+      "Text": "Vegan",
+      "QuestionQuestion_id": "0003",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0012",
+      "Text": "No",
+      "QuestionQuestion_id": "0004",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0013",
+      "Text": "2 or 3",
+      "QuestionQuestion_id": "0006",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0014",
+      "Text": "beans and vegetables",
+      "QuestionQuestion_id": "0007",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0015",
+      "Text": "No",
+      "QuestionQuestion_id": "0008",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0016",
+      "Text": "Monthly",
+      "QuestionQuestion_id": "0009",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0017",
+      "Text": "31-45",
+      "QuestionQuestion_id": "0011",
+      "QuestionnaireQuestionnaire_id": "0002",
+      "SessionSession_id": "0002"
+    },
+    {
+      "Answer_id": "0018",
+      "Text": "Other",
+      "QuestionQuestion_id": "0012",
+      "QuestionnaireQuestionnaire_id": "0002",
+      "SessionSession_id": "0002"
+    },
+    {
+      "Answer_id": "0019",
+      "Text": "Yes",
+      "QuestionQuestion_id": "0013",
+      "QuestionnaireQuestionnaire_id": "0002",
+      "SessionSession_id": "0002"
+    },
+    {
+      "Answer_id": "0020",
+      "Text": "Shoes",
+      "QuestionQuestion_id": "0014",
+      "QuestionnaireQuestionnaire_id": "0002",
+      "SessionSession_id": "0002"
+    },
+    {
+      "Answer_id": "0021",
+      "Text": "50-200 €",
+      "QuestionQuestion_id": "0015",
+      "QuestionnaireQuestionnaire_id": "0002",
+      "SessionSession_id": "0002"
+    },
+    {
+      "Answer_id": "0022",
+      "Text": "Monthly",
+      "QuestionQuestion_id": "0016",
+      "QuestionnaireQuestionnaire_id": "0002",
+      "SessionSession_id": "0002"
+    },
+    {
+      "Answer_id": "0023",
+      "Text": "Style",
+      "QuestionQuestion_id": "0017",
+      "QuestionnaireQuestionnaire_id": "0002",
+      "SessionSession_id": "0002"
+    },
+    {
+      "Answer_id": "0024",
+      "Text": "Monochrome",
+      "QuestionQuestion_id": "0018",
+      "QuestionnaireQuestionnaire_id": "0002",
+      "SessionSession_id": "0002"
+    },
+    {
+      "Answer_id": "0025",
+      "Text": "18-30",
+      "QuestionQuestion_id": "0019",
+      "QuestionnaireQuestionnaire_id": "0003",
+      "SessionSession_id": "0003"
+    },
+    {
+      "Answer_id": "0026",
+      "Text": "Yes",
+      "QuestionQuestion_id": "0020",
+      "QuestionnaireQuestionnaire_id": "0003",
+      "SessionSession_id": "0003"
+    },
+    {
+      "Answer_id": "0027",
+      "Text": "No",
+      "QuestionQuestion_id": "0021",
+      "QuestionnaireQuestionnaire_id": "0003",
+      "SessionSession_id": "0003"
+    },
+    {
+      "Answer_id": "0028",
+      "Text": "Yes",
+      "QuestionQuestion_id": "0022",
+      "QuestionnaireQuestionnaire_id": "0003",
+      "SessionSession_id": "0003"
+    },
+    {
+      "Answer_id": "0029",
+      "Text": "Metro",
+      "QuestionQuestion_id": "0023",
+      "QuestionnaireQuestionnaire_id": "0003",
+      "SessionSession_id": "0003"
+    },
+    {
+      "Answer_id": "0030",
+      "Text": "1-20 minutes",
+      "QuestionQuestion_id": "0024",
+      "QuestionnaireQuestionnaire_id": "0003",
+      "SessionSession_id": "0003"
+    },
+    {
+      "Answer_id": "0031",
+      "Text": "No",
+      "QuestionQuestion_id": "0025",
+      "QuestionnaireQuestionnaire_id": "0003",
+      "SessionSession_id": "0003"
+    },
+    {
+      "Answer_id": "0032",
+      "Text": "31-45",
+      "QuestionQuestion_id": "0027",
+      "QuestionnaireQuestionnaire_id": "0004",
+      "SessionSession_id": "0005"
+    },
+    {
+      "Answer_id": "0033",
+      "Text": "Male",
+      "QuestionQuestion_id": "0028",
+      "QuestionnaireQuestionnaire_id": "0004",
+      "SessionSession_id": "0005"
+    },
+    {
+      "Answer_id": "0034",
+      "Text": "Multiplayer",
+      "QuestionQuestion_id": "0029",
+      "QuestionnaireQuestionnaire_id": "0004",
+      "SessionSession_id": "0005"
+    },
+    {
+      "Answer_id": "0035",
+      "Text": "Last of Us 2",
+      "QuestionQuestion_id": "0030",
+      "QuestionnaireQuestionnaire_id": "0004",
+      "SessionSession_id": "0005"
+    },
+    {
+      "Answer_id": "0036",
+      "Text": "action",
+      "QuestionQuestion_id": "0031",
+      "QuestionnaireQuestionnaire_id": "0004",
+      "SessionSession_id": "0005"
+    },
+    {
+      "Answer_id": "0037",
+      "Text": "PlayStation",
+      "QuestionQuestion_id": "0032",
+      "QuestionnaireQuestionnaire_id": "0004",
+      "SessionSession_id": "0005"
+    },
+    {
+      "Answer_id": "0038",
+      "Text": "Yes",
+      "QuestionQuestion_id": "0033",
+      "QuestionnaireQuestionnaire_id": "0004",
+      "SessionSession_id": "0005"
+    },
+    {
+      "Answer_id": "0039",
+      "Text": "18-30",
+      "QuestionQuestion_id": "0035",
+      "QuestionnaireQuestionnaire_id": "0005",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0040",
+      "Text": "Female",
+      "QuestionQuestion_id": "0036",
+      "QuestionnaireQuestionnaire_id": "0005",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0041",
+      "Text": "Tennis",
+      "QuestionQuestion_id": "0037",
+      "QuestionnaireQuestionnaire_id": "0005",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0042",
+      "Text": "individual",
+      "QuestionQuestion_id": "0038",
+      "QuestionnaireQuestionnaire_id": "0005",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0043",
+      "Text": "yes",
+      "QuestionQuestion_id": "0040",
+      "QuestionnaireQuestionnaire_id": "0005",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0044",
+      "Text": "no",
+      "QuestionQuestion_id": "0041",
+      "QuestionnaireQuestionnaire_id": "0005",
+      "SessionSession_id": "0004"
+    },
+    {
+      "Answer_id": "0045",
+      "Text": "46-60",
+      "QuestionQuestion_id": "0001",
+      "QuestionnaireQuestionnaire_id": "0001",
+      "SessionSession_id": "0005"
+    }
+  ]

@@ -19,8 +19,9 @@ const path = require("path");
 exports.postQuestionnaireUpd = (req, res) => {
     try {
         if (!req.file) {
-            return res.status(400).send({ message: "Please upload a JSON file!" });
+            return res.status(401).send({ message: "Please upload a JSON file!" });
         }
+
 
         const filePath = path.join(__dirname, "..", "uploads", req.file.filename);
 
