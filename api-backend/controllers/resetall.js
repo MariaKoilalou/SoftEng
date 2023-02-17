@@ -6,6 +6,7 @@ const models = initModels(sequelize);
 
 exports.ResetAll = async (req, res) => {
     try {
+      
       await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
       await models.questionnaire.destroy({ truncate: true });  
       
@@ -13,9 +14,11 @@ exports.ResetAll = async (req, res) => {
       await models.session.destroy({ truncate: true });
       await models.answer.destroy({ truncate: true });
       await sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
-      return res.json({
+ 
+       return res.json({
         msg: "All data removed successfully"
-      });
+       });
+      
     } catch (err) {
       console.error(err.message);
       return res.status(500).json({ msg: "Server error" });
