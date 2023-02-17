@@ -11,8 +11,6 @@ router.post("/questionnaire_upd", upload.single('file') ,adminController.postQue
 
 router.post("/resetq/:questionnaireID" , adminController.postQuestionnaire);
 
-router.get("/resetall", adminController.postReset);
-
 router.get("/healthcheck", adminController.getHealthcheck);
 
 

@@ -14,36 +14,26 @@ const fs = require("fs");
 const csv = require("fast-csv");
 const path = require("path");
 
-// exports.postReset = (req, res, next) => {
-
-//     const adminPw = "$2y$12$3hLJswSlH3RHShXDwXuH/OQU98hFYcTbA7xqOlKQKuYkX8yYYKaMC"
-
-//     models.system_admins.findOne({ where: {username: "admin"} })
-//         .then(system_admin => {
-//             if (!system_admin) {
-//                 models.system_admins.create({
-//                     username : "admin",
-//                     password : adminPw
-//                 })
-//                     .then (
-//                         sequelize.query('TRUNCATE TABLE ' + '`session`')
-//                             .then(() => {
-//                                 return res.status(200).json({status: "OK! sessions cleared"});
-//                             })
-//                             .catch(err => {
-//                                 return res.status(500).json({status: "Sessions reset failed"});
-//                             })
-//                     )
-//                     .catch (err => {
-//                         return res.status(500).json({status: "Sessions reset failed"});
-//                     })
-//             }
-
-//         }).catch (err => {
-//         return res.status(500).json({message: "Internal server error."});
-//     })
-
-// }
+exports.deleteQuestionnaireAnswers = async (req, res) => {
+    try {
+      const { questionnaireID } = req.params;
+  
+      if (!questionnaireID) {
+        return res.status(400).json({ msg: "Questionnaire ID Undefined" });
+      }
+  
+      await models.answer.destroy({
+        where: { QuestionnaireQuestionnaire_id: questionnaireID }
+      });
+  
+      return res.json({
+        msg: "Answers deleted successfully"
+      });
+    } catch (err) {
+      console.error(err.message);
+      return res.status(500).json({ msg: "Server error" });
+    }
+  };
 
 // exports.postQuestionnaire = (req, res) => {
 //     const questionnaireID = req.params.questionnaireID;

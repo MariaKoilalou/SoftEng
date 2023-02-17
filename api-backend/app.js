@@ -9,6 +9,8 @@ const getsessionanswers = require('./routes/getsessionanswers');
 const getquestionanswers = require('./routes/getquestionanswers');
 const questionnaire = require('./routes/questionnaire');
 const getallquestionnaires = require('./routes/getallquestionnaires')
+const resetq = require('./routes/resetq')
+const resetall = require('./routes/resetall')
 /* end of ROUTES and how to import routes */
 
 const app = express();
@@ -31,6 +33,8 @@ app.use('/intelliq_api/dosession', dosession);
 app.use('/intelliq_api/getsessionanswers', getsessionanswers);
 app.use('/intelliq_api/getquestionanswers', getquestionanswers);
 app.use('/intelliq_api/getallquestionnaires', getallquestionnaires);
+app.use('/intelliq_api/resetq', resetq);
+app.use('/intelliq_api/resetall', resetall);
 
 // /*End of routes used by our project */
 

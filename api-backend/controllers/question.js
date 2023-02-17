@@ -34,6 +34,21 @@ exports.getQuestion = async (req, res) => {
     if (!questionnaireID || !questionID) {
       return res.status(400).json({ msg: "Data Undefined" });
     }
+    
+
+    
+    const quest = await models.question.findOne({
+      where: {
+        QuestionnaireQuestionnaire_id: questionnaireID,
+        Question_id: questionID
+      }
+    });
+
+    if (!quest) {
+      return res.status(400).json({ msg: "Question not found" });
+    }
+
+
 
     if (format === "csv") {
       const csvString = question.toCsv();
