@@ -14,87 +14,7 @@ const fs = require("fs");
 const csv = require("fast-csv");
 const path = require("path");
 
-exports.deleteQuestionnaireAnswers = async (req, res) => {
-    try {
-      const { questionnaireID } = req.params;
-  
-      if (!questionnaireID) {
-        return res.status(400).json({ msg: "Questionnaire ID Undefined" });
-      }
-  
-      await models.answer.destroy({
-        where: { QuestionnaireQuestionnaire_id: questionnaireID }
-      });
-  
-      return res.json({
-        msg: "Answers deleted successfully"
-      });
-    } catch (err) {
-      console.error(err.message);
-      return res.status(500).json({ msg: "Server error" });
-    }
-  };
 
-// exports.postQuestionnaire = (req, res) => {
-//     const questionnaireID = req.params.questionnaireID;
-  
-//     models.question.findAll({ where: { Questionnaire_id: questionnaireID } })
-//       .then(questions => {
-//         const promises = questions.map(question => {
-//           return models.answer.destroy({ where: { Question_id: question.Question_id } })
-//         })
-  
-//         Promise.all(promises)
-//           .then(() => {
-//             return res.status(200).send({
-//               message: "All answers for the specified questionnaire have been reset successfully."
-//             })
-//           })
-//           .catch(error => {
-//             return res.status(500).send({
-//               message: "Failed to reset answers for the specified questionnaire.",
-//               error: error.message
-//             })
-//           })
-//       })
-//       .catch(error => {
-//         return res.status(500).send({
-//           message: "Failed to retrieve questions for the specified questionnaire.",
-//           error: error.message
-//         })
-//       })
-//   };
-
-
-
-exports.getHealthcheck = (req, res, next) => {
-
-    sequelize.authenticate()
-        .then(() => {
-            res.status(200).json({status: "OK"});
-        })
-        .catch(err => {
-            res.status(500).json({status: "FAILED"});
-        })
-}
-
-
-
-exports.postQuestionnaire = async (req, res, next) => {
-
-    const questionnaireID = req.params.questionnaireID;
-    try {
-        const deletedAnswers = await models.option.destroy({
-            where: { QuestionnaireQuestionnaire_id: questionnaireID }
-        });
-        res.json({ status: 'OK' });
-    } catch (error) {
-        res.status(500).json({
-            status: 'failed',
-            reason: error.message
-        });
-    }
-};
 
 exports.postQuestionnaireUpd = (req, res) => {
     try {
@@ -166,6 +86,3 @@ exports.postQuestionnaireUpd = (req, res) => {
         });
     }
 };
-
-
-
