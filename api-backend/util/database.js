@@ -5,7 +5,7 @@ let sequelize;
 if (process.env.NODE_ENV === undefined) process.env.NODE_ENV = 'run'
 
 if (process.env.NODE_ENV.trim() === 'test') {
-    sequelize = new Sequelize('intelliq_api-test', 'root', 'MariaKoilalou2210!', {
+    sequelize = new Sequelize('intelliq_api-test', 'root', 'MariaKOilalou2210!', {
         dialect: 'mysql',
         host: 'localhost',
         port: '3306',

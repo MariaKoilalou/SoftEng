@@ -9,24 +9,9 @@ module.exports = function(sequelize, DataTypes) {
         },
         Keywords: {
             type: DataTypes.TEXT,
-            allowNull: true,
-            get() {
-                return this.getDataValue('Keywords') ? this.getDataValue('Keywords').split(',') : [];
-            },
-            set(value) {
-                //this.setDataValue('Keywords', value.join(','));
-                this.setDataValue('Keywords');
-            }
+            allowNull: true
         },
-        Author_id: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            primaryKey: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
+
         Title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -52,14 +37,6 @@ module.exports = function(sequelize, DataTypes) {
                 using: "BTREE",
                 fields: [
                     { name: "Questionnaire_id" },
-                ]
-            },
-            {
-                name: "Author_id_UNIQUE",
-                unique: false,
-                using: "BTREE",
-                fields: [
-                    { name: "Author_id" },
                 ]
             },
         ]

@@ -7,15 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             primaryKey: true
         },
-        Userid: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            primaryKey: true,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
+
         QuestionnaireQuestionnaire_id: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -36,24 +28,7 @@ module.exports = function(sequelize, DataTypes) {
                     unique: true,
                     using: "BTREE",
                     fields: [
-                        { name: "Session_id" },
-                        {name: "Userid"},
-                    ]
-                },
-                // {
-                //     name: "Session_id_UNIQUE",
-                //     unique: true,
-                //     using: "BTREE",
-                //     fields: [
-                //         { name: "Session_id" },
-                //     ]
-                // },
-                {
-                    name: "Userid_UNIQUE",
-                    unique: false,
-                    using: "BTREE",
-                    fields: [
-                        { name: "Userid" },
+                        { name: "Session_id" }
                     ]
                 },
                 {

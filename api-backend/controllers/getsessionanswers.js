@@ -12,6 +12,19 @@ exports.getSessionAnswers = async (req, res) => {
       return res.status(400).json({ msg: "Data Undefined" });
     }
 
+    
+    const sess = await models.session.findOne({
+      where: {
+        QuestionnaireQuestionnaire_id: questionnaireID,
+        Session_id: session
+      }
+    });
+
+    if (!sess) {
+      return res.status(400).json({ msg: "Session not found" });
+    }
+
+
     const answers = await models.answer.findAll({
       attributes: ["QuestionQuestion_id", "Answer_id"],
       where: {

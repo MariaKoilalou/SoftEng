@@ -1,7 +1,7 @@
 const express = require("express");
-const doanswerController = require("../controllers/doanswer");
+const DoanswerController = require("../controllers/doanswer");
 const router = express.Router();
 
-router.post("/:questionnaireID/:questionID/:session/:optionID", doanswerController.postDoAnswer);
+router.get("/:questionnaireID/:questionID/:sessionID/:optionID", DoanswerController.postDoAnswer);
 
 module.exports = router;
