@@ -52,9 +52,9 @@ exports.getSessionAnswers = async (req, res) => {
       };
 
       const csv = json2csv(result, { fields })
-      const html = `<pre>${csv}</pre>`;
-      res.setHeader("Content-Type", "text/html");
-      return res.send(html);
+      // const html = `<pre>${csv}</pre>`;
+      res.setHeader("Content-Type", "text/plain");
+      return res.send(csv);
     } 
 
     else {
