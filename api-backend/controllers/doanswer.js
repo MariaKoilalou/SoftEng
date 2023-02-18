@@ -40,7 +40,24 @@ exports.postDoAnswer = async (req, res) => {
       return res.status(400).json({ msg: "Question not found" });
     }
 
-    const session = await models.session.findByPk(sessionID);
+    // const option = await models.option.findOne({
+    //   where: {
+    //     QuestionnaireQuestionnaire_id: questionnaireID,
+    //     QuestionQuestion_id: questionID,
+    //     Option_id: optionID
+    //   }
+    // });
+
+    // if (!option) {
+    //   return res.status(400).json({ msg: "Option not found" });
+    // }
+
+    const session = await models.session.findOne({
+      where: {
+        QuestionnaireQuestionnaire_id: questionnaireID,
+        Session_id: sessionID,
+      }
+    });
 
     if (!session) {
       return res.status(400).json({ msg: "Session not found" });
@@ -55,8 +72,8 @@ exports.postDoAnswer = async (req, res) => {
       SessionSession_id: sessionID
     });
 
-    return res.sendStatus(200);
-    // return res.json({ msg: "Answer recorded successfully" });
+    res.status(200).json({status: "OK"});
+
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ msg: "Server error" });

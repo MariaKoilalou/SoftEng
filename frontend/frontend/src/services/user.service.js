@@ -11,5 +11,20 @@ class UserService {
   getq(inp){
     return axios.get(API_URL+"questionnaire/"+ inp)
   }
+  postSession(id){
+    return axios.get(API_URL + "dosession/"+id)
+  }
+  getOptions(qid,id){
+    return axios.get(API_URL+ "getquestionoptions/"+qid +"/"+id);
+  }
+  postAnswer(qid,id,sid,oid){
+    return axios.get(API_URL + "doanswer/" + qid+"/" +id+"/"+sid+"/"+oid);
+  }
+  getQuestion(qid,id){
+    return axios.get(API_URL+"question/"+qid+"/"+id);
+  }
+  getSessionNum(qid){
+    return axios.get(API_URL + "getsessionnumber/"+qid);
+  }
 }
 export default new UserService();

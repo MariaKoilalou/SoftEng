@@ -3,8 +3,8 @@ import requests
 import json
 from pathlib import Path
 from datetime import date
-from prettytable import from_csv
-from prettytable import DEFAULT
+# from prettytable import from_csv
+# from prettytable import DEFAULT
 
 
 def doanswer(ar): 
