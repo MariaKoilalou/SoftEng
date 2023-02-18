@@ -82,8 +82,8 @@ exports.getQuestion = async (req, res) => {
       };
 
       const csv = json2csv(result, { fields })
-      const html = `<pre>${csv}</pre>`;
-      res.setHeader("Content-Type", "text/html");
+      // const html = `<pre>${csv}</pre>`;
+      res.setHeader("Content-Type", "text/plain");
       return res.send(html);
     }
 

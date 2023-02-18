@@ -17,9 +17,11 @@ def questionnaire(ar):
     if (ar.format == 'json' and res.status_code == 200):
         print(json.dumps(res.json(), indent=4, sort_keys=False))
     elif (ar.format == 'csv' and res.status_code == 200):
-        f = open("./questionnaire.csv",'w+')
-        f.truncate(0)
         print(res.text)
+        ## just printing the csv instead of downloading it
+        ## if we want it to be downloaded we should use the following code
+        # f = open("./questionnaire.csv",'w+')
+        # f.truncate(0)
         ## just printing the csv instead of downloading it
         ## if we want it to be downloaded we should use the following code
         # f.write(res.text)
