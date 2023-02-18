@@ -22,10 +22,15 @@ class Home extends Component {
   }
 
   componentDidMount(){
+
+    const deleteFirst=(d)=>{
+      var x = d.shift();
+      return d;
+    }
     UserService.getQuestionnaire().then(
       respose =>{
         this.setState({
-          content: respose.data
+          content: deleteFirst(respose.data)
         });
       },
       error =>{
@@ -39,8 +44,8 @@ class Home extends Component {
     );
   }
   table(){
-    const toQuestionnaire=(id,title)=>{
-      this.props.myHookValue("/questionnaire/"+id,{state:{id:id,title:title}});
+    const toQuestionnaire=(id,title,question)=>{
+      this.props.myHookValue("/intelliq_api/questionnaire/"+id,{state:{id:id,title:title}});
     }
     return (
       <table class='table table-bordered table-condensed table-striped table-hover'>
