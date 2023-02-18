@@ -3,8 +3,8 @@ import requests
 import json
 
 def resetq(ar):
-    url = f'http://localhost:9103/intelliq_api/resetall/{ar.questionnaire_id}'
-    res = requests.delete(url, verify=False)
+    url = f'http://localhost:9103/intelliq_api/resetall/{ar.questionnaire_id}/'
+    res = requests.get(url, verify=False)
     print(res.status_code)
     print(res.json())
     return True

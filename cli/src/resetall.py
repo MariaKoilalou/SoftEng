@@ -22,7 +22,7 @@ import requests
 
 def reset_all():
     url = 'http://localhost:9103/intelliq_api/resetall/'
-    response = requests.delete(url)
+    response = requests.get(url)
 
     if response.status_code == 200:
         print("All data removed successfully!")
