@@ -15,14 +15,17 @@ def getquestionanswers(ar):
     if (ar.format == 'json' and res.status_code == 200):
         print(json.dumps(res.json(), indent=4, sort_keys=False))
     elif (ar.format == 'csv' and res.status_code == 200):
-        f = open("./getquestionanswers.cv",'w+')
-        f.truncate(0)
-        f.write(res.text)
-        f.seek(0)
-        x = from_csv(f, delimiter =',')
-        x.set_style(DEFAULT)
-        print(x)
-        f.close()
+        print(res.text)
+        ## just printing the csv instead of downloading it
+        ## if we want it to be downloaded we should use the following code
+        # f = open("./getquestionanswers.cv",'w+')
+        # f.truncate(0)
+        # f.write(res.text)
+        # f.seek(0)
+        # x = from_csv(f, delimiter =',')
+        # x.set_style(DEFAULT)
+        # print(x)
+        # f.close()
     return True
 
 
