@@ -15,9 +15,7 @@ exports.ResetAll = async (req, res) => {
       await models.answer.destroy({ truncate: true });
       await sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
  
-       return res.json({
-        msg: "All data removed successfully"
-       });
+      return res.status(200).json({ msg: "All data removed successfully" });
       
     } catch (err) {
       console.error(err.message);
