@@ -4,10 +4,10 @@ import json
 
 def resetall(ar):
     url = 'http://localhost:9103/intelliq_api/resetall'
-    res = requests.post(url,verify=False)
+    res = requests.get(url,verify=False)
     print(res.status_code)
     print(res.json())
-    while(1) : {}
+    #while(1) : {}
     return True
 
 
