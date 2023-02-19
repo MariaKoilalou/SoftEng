@@ -9,7 +9,7 @@ from datetime import date
 
 def doanswer(ar): 
     url = 'http://localhost:9103/intelliq_api/doanswer/' + ar.questionnaire_id + '/' + ar.question_id + '/' + ar.session_id + '/' + ar.option_id 
-    res = requests.post(url, data=ar.option_id, verify=False)
+    res = requests.get(url, data=ar.option_id, verify=False)
     print(res.status_code)
     print(json.dumps(res.json(), indent=4, sort_keys=False)) # maybe just print res.json, we will see in testing
     return True
